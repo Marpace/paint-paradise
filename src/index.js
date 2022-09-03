@@ -21,7 +21,7 @@ import Home from './components/home/Home';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
+  <HashRouter>
     <Routes>
   
       <Route path="/" element={<App editingModeOn={false} />}> 
@@ -56,5 +56,5 @@ root.render(
       }
       />
     </Routes>
-  </BrowserRouter>
+  </HashRouter>
 );
