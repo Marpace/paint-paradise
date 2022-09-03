@@ -1,0 +1,185 @@
+.about-instagram {
+    height: 475px;
+    @include flex_centered(column);
+    gap: 20px;
+    margin: 125px 0;
+    @include responsive($tablet){
+        padding: 0 10%;
+    }
+    @include responsive($desktop){
+        padding: 0 15%;
+        max-width: 1500px;
+        margin: 125px auto;
+    }
+
+    &__heading {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        @include responsive($tablet) {
+            width: 100%;
+        }
+        .heading-title {
+            display: flex;
+            justify-content: flex-start;
+            .purple-title {
+                text-align: left;
+                font-size: 1.4rem;
+                font-family: "Gotham bold";
+                max-width: 240px;
+                @include responsive($tablet) {
+                    max-width: 100%;
+                    font-size: 1.6rem;
+                }
+            }
+        }
+    }
+    &__carousel {
+        width: 100%;
+        @include flex_centered(column);
+
+        .instagram-carousel-inner {
+            width: 90%;
+            max-width: 800px;
+            aspect-ratio: 1/.5;
+            position: relative;
+            @include responsive($tablet) {
+                width: 100%;
+                max-width: 1500px;
+                overflow: hidden;
+                aspect-ratio: 1/.3;
+            }
+            @include responsive($tablet_large) {
+                aspect-ratio: 1/.37;
+            }
+
+            &__img {
+                width: 48%;
+                max-width: 350px;
+                aspect-ratio: 1/1;
+                position: absolute;
+                object-fit: cover;
+                border-radius: 8px;
+                @include responsive($tablet){
+                    width: 32%;
+                    transition-property: left;
+                    transition-duration: 400ms;
+                }
+            }
+            .left-img {
+                left: 0px;
+                z-index: 100;
+            }
+            .middle-img {
+                left: 50%;
+                z-index: 1000;
+                @include responsive($tablet) {
+                    left: 34%;
+                }
+            }
+            .right-img {
+                left: 100%;
+                z-index: 100;
+                @include responsive($tablet) {
+                    left: 68%;
+                }
+            }
+        }
+    }
+
+}
+//     .instagram-title h2 {
+//         font-size: 28px;
+//         color: $purple;
+//         @include tilt_right;
+//     }
+//     .instagram-text {
+//         margin: 20px 0;
+//         width: 100%;
+//         max-width: 992px;
+//         p {
+//         font-size: 25px;
+//         margin-top: 30px;
+//         }
+//     }
+//     .instagram-carousel {
+//         @include flex_centered(column);
+//         height: 330px;
+//         width: 100%;
+        
+//         &-inner {
+//             position: relative;
+//             overflow: hidden;
+//             height: 150px;
+//             width: 100%;
+//             max-width: 992px;
+            
+//             .instagram-carousel-items {
+//                 left: 0px;
+//                 height: 100%;
+//                 position: absolute;
+//                 @include flex_centered(row);
+//                 justify-content: space-between;
+//                 transition: .4s;
+
+//                 &-item {
+//                     height: 100%;
+//                    width: 150px;
+//                     margin: 0 10px;
+//                     background-size: cover;
+//                     border-radius: 10px;
+
+//                     img {
+//                         width: 100%;
+//                         object-fit: cover;
+//                     }
+//                 }
+//                 &-item:first-child {
+//                     margin-left: 0;
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// @include responsive($tablet){
+//     .instagram {
+//         padding: 0 10%;
+//     }
+// }
+
+// @include responsive($tablet_large) {
+//     .instagram {
+//         height: 600px;
+//         padding: 0 10%;
+    
+//         .instagram-title h2 {
+//             font-size: 32px;
+
+//             br {
+//                 display: none;
+//             }
+//         }
+//         .instagram-carousel {
+//             height: 330px;
+//             @include responsive($desktop_large){
+//                 height: 380px;
+//             }
+            
+//             &-inner {
+//                 height: 100%;
+//                 width: 100%;
+//                 margin-bottom: 30px;
+                
+//                 .instagram-carousel-items-item{
+//                     min-width: 250px;        
+//                     @include responsive($desktop_large) {
+//                         min-width: 300px;
+//                     }          
+//                 }
+//             }
+//         }
+//     }
+// }
+

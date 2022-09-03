@@ -1,0 +1,25 @@
+
+@mixin flex_centered($direction) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin responsive($size) {
+    @media only screen and (min-width: $size) {
+        @content
+    }
+}
+    
+@mixin tilt_left {
+    transform: rotate(-1deg);
+}
+
+@mixin tilt_right {
+    transform: rotate(1deg);
+}
+
+@mixin box-shadow($back-color) {
+    box-shadow: 7px 10px $back-color;
+}

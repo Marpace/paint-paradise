@@ -1,0 +1,77 @@
+/* ****************  FONTS  **************** */
+@font-face {
+  font-family: 'Gotham Book';
+  src: url('../fonts/Gotham-Book.woff') format('woff');
+  font-weight: lighter;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham Medium';
+  src: url('../fonts/Gotham-Medium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+  
+ @font-face {
+  font-family: 'Gotham Bold';
+  src: url('../fonts/Gotham-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+  
+@font-face {
+  font-family: 'Gotham Ultra';
+  src: url('../fonts/Gotham-Ultra.woff') format('woff');
+  font-weight: bolder;
+  font-style: normal;
+  font-display: swap;
+}
+  
+
+.heading-title {
+  width: 100%;
+  @include flex_centered(row);
+
+  .purple-title {
+    font-family: "Gotham Ultra";
+    color: $purple;  
+    text-align: center; 
+    font-size: 2.1rem;
+    @include responsive($tablet){
+      font-size: 2.6rem;
+    }
+    @include responsive($desktop){
+      font-size: 2.9rem;
+      text-align: left;
+    }
+  }
+}
+
+.tilt-left {
+  transform: rotate(-1deg);
+}
+.tilt-right {
+  transform: rotate(1deg);
+}
+
+.font-medium {
+  font-family: "Gotham Medium";
+  font-size: 1.2rem;
+  line-height: 1.4;
+  @include responsive($desktop) {
+    font-size: 1rem;
+  }
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
