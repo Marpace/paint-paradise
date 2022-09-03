@@ -1,0 +1,60 @@
+.about-header {
+    position: relative;
+    z-index: 900;
+    padding: 0px 5%;
+    @include responsive($tablet){
+        padding: 50px 10%;
+    }
+    @include responsive($tablet_large){
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    @include responsive($desktop){
+        padding: 50px 15% 100px;
+        max-width: 1500px;
+        margin: auto;
+    }
+
+    &__img {
+        position: relative;
+        height: 400px;
+        width: 90%;
+        max-width: 500px;
+        margin: 50px auto;
+        border-radius: 15px;
+        margin: 30px auto;
+        @include box-shadow($light_purple);
+        background-color: $dark_purple;     
+        @include responsive($tablet_large) {
+            width: 40%;
+            height: 550px;
+            margin: 0;
+        }
+
+        &:hover > .edit-icon {
+            display: block;
+        }
+    }
+    &__text {
+        @include responsive($tablet_large) {
+            width: 50%;
+        }
+
+        .heading-title {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 10px;
+            .purple-title {
+                font-size: 2rem;
+            }
+        }
+        p:last-child {
+            margin-top: 20px
+        }
+    }
+  }
+
+
+

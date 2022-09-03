@@ -1,0 +1,55 @@
+.content {
+    padding: 0 5%;
+    @include flex_centered(column);
+    gap: 50px;
+    @include responsive($desktop){
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 79px;
+        padding: 0 15%;
+    }
+    @include responsive($desktop_large){
+        padding: 0 20%;
+    }
+
+    .heading-title {
+        @include flex_centered(row);
+    }
+    &-item{
+        @include flex_centered(column);
+        align-items: flex-start;
+        gap: 15px;
+        max-width: 400px;
+        @include responsive($tablet){
+            align-items: center;
+        }
+        @include responsive($desktop) {
+            align-items: flex-start;
+            max-width: 27%;
+        }
+
+        &__icon {
+            height: 60px;
+            width: 60px;
+            background-color: grey;
+            border-radius: 50%;
+        
+            &-img {
+                width: 100%;
+            }
+        }
+        &__title {
+            font-size: 1.2rem;
+        }
+        &__text {
+            @include responsive($tablet){
+                text-align: center;
+                max-width: 350px;
+            }
+            @include responsive($desktop) {
+                text-align: left;
+            }
+        }
+    }
+}

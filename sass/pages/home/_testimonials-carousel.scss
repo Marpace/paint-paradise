@@ -1,0 +1,85 @@
+.testimonials {
+    @include flex_centered(column);
+    gap: 40px;
+    @include responsive($desktop){
+        gap: 70px;
+    }
+
+    .testimonial-cards {
+        width: 90%;
+        height: 300px;
+        position: relative;
+        @include responsive($desktop) {
+            height: 390px;
+        }
+
+        .testimonial-card {
+            @include flex_centered(column);
+            gap: 30px;
+            position: absolute;
+            padding: 20px;
+            border: 2px solid black;
+            border-radius: 10px;
+            width: 90%;
+            transition: 500ms;
+            background-color: white;
+            @include responsive($desktop) {  
+                width: 35%;
+            }
+
+            .card-text,
+            .card-author {
+                text-align: center;
+            }
+
+            .card-text {
+                font-size: .9rem;
+                font-weight: bold;
+                @include responsive($tablet) {
+                    font-size: 1.1rem;
+                    line-height: 1.6;
+                }
+            }
+            .card-author {
+                font-size: .7rem;
+                font-weight: bold;
+                color: $purple;
+                @include responsive($tablet) {
+                    font-size: 1rem;
+                }
+            }
+        }
+        .test-middle {
+            transform: translateY(-10px);
+            left: 5%;
+            z-index: 1000;
+            @include responsive($desktop){
+                left: 32%;
+            }
+        }
+        .test-left {
+            left: -90%;
+            z-index: 100;
+            @include responsive($desktop) {
+                left: -8%;
+            }
+        }
+        .test-right {
+            left: 100%;
+            z-index: 100;
+            @include responsive($desktop){
+                left: 72%;
+            }
+        }
+    }
+    .testimonial-editable {
+        display: flex; 
+        gap: 50px;
+
+        .testimonial-card-editable{
+            position: static;
+            transform: translateY(0);
+            height: fit-content;
+        }
+    }
+}

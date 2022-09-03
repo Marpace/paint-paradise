@@ -1,0 +1,96 @@
+.paint-kits {
+  @include flex_centered(column);
+  gap: 50px;
+  padding: 0 5%;
+  @include responsive($tablet_large){
+    padding: 0 10%;
+  }
+  @include responsive($desktop){
+    padding: 0 15%;
+  }
+  @include responsive($desktop_large){
+    padding: 0 20%;
+  }
+  @include responsive($desktop_xl){
+    padding: 0 25%;
+  }
+  
+  &-section {
+    width: 100%;
+    max-width: 700px;
+    @include responsive($tablet_large) {
+      display: flex;
+      justify-content: space-between;
+      max-width: 100%;
+    }
+
+    &__text {
+      @include responsive($tablet_large) {
+        width: 40%;
+      }
+      .heading-title {
+        justify-content: flex-start;
+
+        .purple-title {
+          text-align: left;
+        }
+      }
+      &-description {
+        margin: 20px 0 30px;
+      }
+    }
+    &__image {
+      display: none;
+      @include responsive($tablet_large) {
+        @include flex_centered(row);
+        align-self: center;
+        position: relative;
+        height: fit-content;
+
+        &:hover > .edit-icon {
+          display: block;
+        }
+        &-image {
+          border-radius: 8px;
+          @include box-shadow($light_purple)
+        }
+      }
+    }
+  }
+  .get-paint-kit-container{
+    @include flex_centered(row);
+    flex-wrap: wrap;
+    gap: 50px;
+    width: 100%;
+    margin: 100px 0;
+    
+    .get-paint-kit {
+      @include flex_centered(column);
+      gap: 25px;
+      @include responsive($desktop) {
+        width: 28%;
+        max-width: 350px;
+        justify-content: space-between;
+      }
+
+      .kit-image-container {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1/1;
+        overflow: hidden;
+
+        &:hover > .edit-icon {
+          display: block;
+        }
+      }
+      .get-kit-link {
+        width: 80%;
+        max-width: 270px;
+
+        .purple-button {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
