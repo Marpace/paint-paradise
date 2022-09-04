@@ -1,5 +1,6 @@
 {
   "name": "paint-paradise",
+  "homepage": "https://marpace.github.io/paint-paradise/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
