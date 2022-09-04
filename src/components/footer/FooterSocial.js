@@ -29,13 +29,13 @@ function FooterSocial(props) {
       </h1>
       <div className="social-icons-container">
         <a className={`${context.editingModeOn ? "link-disabled" : ""}`} href="https://www.facebook.com/PaintParadiseArtStudio">
-          <img className="footer-icon" src="/images/footer/facebook_icon.svg" alt="facebook-icon"></img>
+          <img className="footer-icon" src="./images/footer/facebook_icon.svg" alt="facebook-icon"></img>
         </a>
         <a className={`${context.editingModeOn ? "link-disabled" : ""}`} href="https://www.instagram.com/paintparadise_/?hl=en">
-          <img className="footer-icon" src="/images/footer/instagram_icon.svg" alt="instagram-icon"></img>
+          <img className="footer-icon" src="./images/footer/instagram_icon.svg" alt="instagram-icon"></img>
         </a>
         <a className={`${context.editingModeOn ? "link-disabled" : ""}`} href="https://www.tiktok.com/@paintparadise?lang=en">
-          <img className="footer-icon" src="/images/footer/tiktok_icon.svg" alt="tiktok-icon"></img>
+          <img className="footer-icon" src="./images/footer/tiktok_icon.svg" alt="tiktok-icon"></img>
         </a>
       </div>
     </div>

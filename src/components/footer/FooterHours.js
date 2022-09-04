@@ -38,7 +38,7 @@ function FooterHours(props) {
 
   return (
     <div className="footer-section footer-hours">
-      <img className="footer-logo" src="/images/footer/footer_logo.svg"></img>
+      <img className="footer-logo" src="./images/footer/footer_logo.svg"></img>
       <div className="hours-content">
         <h1 onClick={editTitleContent} className={`footer-title ${context.editingModeOn ? "editable" : ""}`}>{editTitleState ? context.textValue : props.title.content}</h1>
         <p onClick={editWeekendContent} className={`footer-text ${context.editingModeOn ? "editable" : ""}`}>{editWeekendState ? context.textValue : props.weekendHours.content}</p>

@@ -45,14 +45,14 @@ function FooterContact(props) {
       </h1>
       <div onClick={editPhoneContent} className={`contact-item ${context.editingModeOn ? "editable" : ""}`}>
         <a className={`contact-link ${context.editingModeOn ? "link-disabled" : ""}`} href="Tel:6473909659">
-          <img className="footer-icon" src="/images/footer/phone_icon.svg" alt="phone-icon"></img>
+          <img className="footer-icon" src="./images/footer/phone_icon.svg" alt="phone-icon"></img>
           <p className="footer-text">
           {editPhoneState ? context.textValue : props.phoneNumber.content}</p>
         </a>
       </div>
       <div onClick={editEmailContent} className={`contact-item ${context.editingModeOn ? "editable" : ""}`}>
         <a className={`contact-link ${context.editingModeOn ? "link-disabled" : ""}`} href="mailto:Paint.Paradise.Art@gmail.com">
-          <img className="footer-icon" src="/images/footer/email_icon.svg" alt="email-icon"></img>
+          <img className="footer-icon" src="./images/footer/email_icon.svg" alt="email-icon"></img>
           <p className={`footer-text`}>
           {editEmailState ? context.textValue : props.email.content}
           </p>

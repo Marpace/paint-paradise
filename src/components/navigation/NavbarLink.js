@@ -79,12 +79,12 @@ function NavbarLink(props) {
                 <img 
                     onClick={toggleDropdown} 
                     className={`drop-down-arrow arrow-white ${dropdownOpen ? "arrow-up" : ""} ${context.editingModeOn ? "link-disabled" : ""}`} 
-                    src="/images/navbar/dropdown_icon_white.png">
+                    src="./images/navbar/dropdown_icon_white.png">
                 </img>
                 <img 
                     onClick={toggleDropdown} 
                     className={`drop-down-arrow arrow-purple ${dropdownOpen ? "arrow-up" : ""} ${context.editingModeOn ? "link-disabled" : ""}`} 
-                    src="/images/navbar/dropdown_icon.png">
+                    src="./images/navbar/dropdown_icon.png">
                 </img>
 
                 <div className={`drop-down-menu ${dropdownOpen ? "drop-down-open" : ""} ${context.editDropdown ? "cms-dropdown" : ""}`}>
