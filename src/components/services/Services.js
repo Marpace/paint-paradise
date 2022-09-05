@@ -1,6 +1,7 @@
 import {Outlet} from "react-router-dom";
 import React, { useEffect, useState, useContext } from "react"
 import { UrlContext } from "../App";
+import LoadingScreen from "../LoadingScreen";
 
 export const ServicesContext = React.createContext();
 
@@ -41,6 +42,10 @@ function Services() {
       <ServicesContext.Provider value={servicesContent}>
         <Outlet/>
       </ServicesContext.Provider>
+    )
+  } else {
+    return (
+      <LoadingScreen />
     )
   }
 }

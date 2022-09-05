@@ -3,6 +3,7 @@ import SitePath from "../SitePath";
 import {useEffect, useContext, useState} from "react"
 import GetPaintKit from "./GetPaintKit";
 import {UrlContext} from "../../App";
+import LoadingScreen from "../../LoadingScreen";
 
 function PaintKits() {
 
@@ -108,6 +109,10 @@ function PaintKits() {
         ))}
       </div>
     </div>
+    )
+  } else {
+    return (
+      <LoadingScreen />
     )
   }
 }

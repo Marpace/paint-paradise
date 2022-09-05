@@ -40,7 +40,7 @@ function NavbarBrand(props) {
     return (
         <div className="logo">
             <div >
-              <img src="/images/navbar/navbar_logo.svg" alt=""></img>
+              <img src="./images/navbar/navbar_logo.svg" alt=""></img>
             </div>
             <h3 onClick={editContent} className={`${context.editingModeOn ? "editable" : ""}`}>{editState ? context.textValue : content}</h3>
         </div>

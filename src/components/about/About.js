@@ -2,6 +2,7 @@ import AboutHeader from "./AboutHeader";
 import AboutInstagram from "./AboutInstagram";
 import {UrlContext} from "../App";
 import {useContext, useEffect, useState} from "react";
+import LoadingScreen from "../LoadingScreen";
 
 
 function About() {
@@ -49,6 +50,10 @@ function About() {
           title={titles[1]}
         />
       </div>
+    )
+  } else {
+    return (
+      <LoadingScreen />
     )
   }
 }

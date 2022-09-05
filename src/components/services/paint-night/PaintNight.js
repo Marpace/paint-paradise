@@ -5,6 +5,7 @@ import { UrlContext } from "../../App";
 import {useContext, useEffect, useState} from "react";
 import {EditContext} from "../../cms/CMS";
 import Paragraph from "../../Paragraph";
+import LoadingScreen from "../../LoadingScreen";
 
 
 
@@ -90,6 +91,10 @@ function PaintNight() {
           </div>
         </div>
       </div>
+    )
+  } else {
+    return (
+      <LoadingScreen />
     )
   }
 }

@@ -7,6 +7,7 @@ import TestimonialsCarousel from "./testimonials/TestimonialsCarousel";
 import {UrlContext} from "../App"
 import { useContext, useEffect, useState } from "react";
 import React from "react";
+import LoadingScreen from "../LoadingScreen";
 
 export const homeTextContext = React.createContext();
 
@@ -17,6 +18,7 @@ function Home() {
   const [bookNowTitle, setBookNowTitle] = useState({});
   const [bookNowButton, setBookNowButton] = useState({});
   const [carouselImages, setCarouselImages] = useState([]);
+  const [contentLoaded, setContentLoaded] = useState(false);
 
   useEffect(() => {
     getHomeContent();
@@ -41,12 +43,13 @@ function Home() {
       setHomeContent( prev => {
         return [...prev, ...data.content]
       })
+      setContentLoaded(true);
       
     })
     .catch( err => console.log(err))
   }
 
-  if(carouselImages.length > 0) {
+  if(contentLoaded) {
     return (
       <homeTextContext.Provider value={homeContent}>
         <div className="home">
@@ -63,6 +66,10 @@ function Home() {
           />
         </div>
       </homeTextContext.Provider>
+    )
+  } else {
+    return (
+      <LoadingScreen />
     )
   }
 }

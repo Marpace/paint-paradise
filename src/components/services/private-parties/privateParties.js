@@ -2,6 +2,7 @@ import SitePath from "../SitePath";
 import PrivatePartiesSection from "./PrivatePartiesSection";
 import React, { useContext, useEffect, useState } from "react";
 import { UrlContext } from "../../App";
+import LoadingScreen from "../../LoadingScreen";
 
 
 
@@ -88,6 +89,10 @@ function PrivateParties() {
           />
           ))}
         </div>
+    )
+  } else {
+    return (
+      <LoadingScreen />
     )
   }
 }
