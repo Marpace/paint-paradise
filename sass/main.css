@@ -216,6 +216,53 @@ p {
   cursor: pointer;
 }
 
+.loading-screen {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.loading-screen .spinner {
+  position: relative;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  animation-name: spin;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  background-color: #1D1330;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.loading-screen .spinner::before {
+  content: "";
+  position: absolute;
+  height: 30px;
+  width: 40px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+}
+.loading-screen .spinner .spinner-inner {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  background-color: white;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .nav-wrap {
   position: relative;
   z-index: 1000;
@@ -587,7 +634,7 @@ p {
 .hero {
   height: 100vh;
   padding-top: 100px;
-  background-image: url("../../../images/home/hero_background.svg");
+  background-image: url("../images/home/hero_background.svg");
   background-repeat: no-repeat;
   background-size: 100% 60%;
 }
@@ -1032,21 +1079,21 @@ p {
   height: 370px;
   width: 100%;
   margin-top: 100px;
-  background-image: url("../../../images/home/book_now_background.svg");
+  background-image: url("../images/home/book_now_background.svg");
   background-repeat: no-repeat;
   background-size: 100% 370px;
   background-position: bottom;
 }
 
 .services__section {
-  background-image: url("../../../images/services/top_section_bg.svg");
+  background-image: url("../images/services/top_section_bg.svg");
   background-repeat: no-repeat;
   background-size: 100% 80%;
   padding: 80px 5%;
   margin-bottom: 80px;
 }
 .services__section:nth-child(2) {
-  background-image: url("../../../images/services/middle_section_bg.svg");
+  background-image: url("../images/services/middle_section_bg.svg");
 }
 @media only screen and (min-width: 992px) {
   .services__section:nth-child(2) {
@@ -1054,7 +1101,7 @@ p {
   }
 }
 .services__section:nth-child(3) {
-  background-image: url("../../../images/services/bottom_section_bg.svg");
+  background-image: url("../images/services/bottom_section_bg.svg");
 }
 @media only screen and (min-width: 992px) {
   .services__section {

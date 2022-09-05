@@ -1,17 +1,17 @@
 .services__section {
-    background-image: url("../../../images/services/top_section_bg.svg");
+    background-image: url("../images/services/top_section_bg.svg");
     background-repeat: no-repeat;
     background-size: 100% 80%;
     padding: 80px 5%;
     margin-bottom: 80px;
     &:nth-child(2) {
-        background-image: url("../../../images/services/middle_section_bg.svg");
+        background-image: url("../images/services/middle_section_bg.svg");
         @include responsive($tablet_large) {
             flex-direction: row-reverse;
         }
     }
     &:nth-child(3) {
-        background-image: url("../../../images/services/bottom_section_bg.svg");
+        background-image: url("../images/services/bottom_section_bg.svg");
     }
 
     @include responsive($tablet_large){
