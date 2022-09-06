@@ -1619,7 +1619,6 @@ p {
 }
 
 .about-instagram {
-  height: 475px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1658,7 +1657,7 @@ p {
   text-align: left;
   font-size: 1.4rem;
   font-family: "Gotham bold";
-  max-width: 240px;
+  max-width: 248px;
 }
 @media only screen and (min-width: 768px) {
   .about-instagram__heading .heading-title .purple-title {
@@ -1675,59 +1674,51 @@ p {
 }
 .about-instagram__carousel .instagram-carousel-inner {
   width: 90%;
-  max-width: 800px;
-  aspect-ratio: 1/0.5;
+  display: flex;
+  overflow: hidden;
   position: relative;
 }
 @media only screen and (min-width: 768px) {
   .about-instagram__carousel .instagram-carousel-inner {
     width: 100%;
-    max-width: 1500px;
-    overflow: hidden;
-    aspect-ratio: 1/0.3;
   }
 }
-@media only screen and (min-width: 992px) {
-  .about-instagram__carousel .instagram-carousel-inner {
-    aspect-ratio: 1/0.37;
-  }
+.about-instagram__carousel .instagram-carousel-inner .ghost {
+  width: 100%;
+  aspect-ratio: 1/0.35;
 }
-.about-instagram__carousel .instagram-carousel-inner__img {
-  width: 48%;
-  max-width: 350px;
-  aspect-ratio: 1/1;
+.about-instagram__carousel .instagram-carousel-inner .carousel-images {
   position: absolute;
-  object-fit: cover;
-  border-radius: 8px;
+  transition-property: left;
+  transition-duration: 600ms;
+  transition-timing-function: ease-in-out;
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
-@media only screen and (min-width: 768px) {
-  .about-instagram__carousel .instagram-carousel-inner__img {
-    width: 32%;
-    transition-property: left;
-    transition-duration: 400ms;
-  }
+.about-instagram__carousel .instagram-carousel-inner .carousel-images__image {
+  width: 32%;
+  aspect-ratio: 1/1;
+  position: relative;
 }
-.about-instagram__carousel .instagram-carousel-inner .left-img {
-  left: 0px;
-  z-index: 100;
+.about-instagram__carousel .instagram-carousel-inner .carousel-images__image:hover > .edit-icon {
+  display: block;
 }
-.about-instagram__carousel .instagram-carousel-inner .middle-img {
-  left: 50%;
-  z-index: 1000;
+.about-instagram__carousel .instagram-carousel-inner .insta-left {
+  left: -100%;
 }
-@media only screen and (min-width: 768px) {
-  .about-instagram__carousel .instagram-carousel-inner .middle-img {
-    left: 34%;
-  }
+.about-instagram__carousel .instagram-carousel-inner .insta-middle {
+  left: 0;
 }
-.about-instagram__carousel .instagram-carousel-inner .right-img {
-  left: 100%;
-  z-index: 100;
+.about-instagram__carousel .instagram-carousel-inner .insta-right {
+  left: 110%;
 }
-@media only screen and (min-width: 768px) {
-  .about-instagram__carousel .instagram-carousel-inner .right-img {
-    left: 68%;
-  }
+.about-instagram__carousel .instagram-carousel-inner .insta-editable {
+  position: static;
+}
+.about-instagram__carousel .carousel-editable {
+  flex-wrap: wrap;
 }
 
 .gallery-grid {
