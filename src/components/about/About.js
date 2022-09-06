@@ -8,7 +8,8 @@ import LoadingScreen from "../LoadingScreen";
 function About() {
 
   const urlContext = useContext(UrlContext);
-  const [headerImage, setHeaderImage] = useState([]);
+  const [headerImage, setHeaderImage] = useState();
+  const [instaImages, setInstaImages] = useState([]);
   const [contentLoaded, setContentLoaded] = useState(false);
   const [headings, setHeadings] = useState([]);
   const [titles, setTitles] = useState([]);
@@ -30,7 +31,8 @@ function About() {
     })
     .then( res => res.json())
     .then( data => {
-      setHeaderImage(data.content[0])
+      setHeaderImage(data.content.find(e => e.location.section === "header"))
+      setInstaImages(data.content.filter(e => e.location.section === "instagram"))
       setContentLoaded(true)
     })
     .catch( err => console.log(err))
@@ -48,6 +50,7 @@ function About() {
         <AboutInstagram 
           heading={headings[1]}
           title={titles[1]}
+          images={instaImages}
         />
       </div>
     )

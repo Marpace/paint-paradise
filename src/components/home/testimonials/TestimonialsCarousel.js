@@ -26,22 +26,6 @@ function TestimonialsCarousel() {
     setAuthors(sortContent(homeContext, "author", "testimonials"));
   }, [homeContext])
 
-  // function getTestimonialsCarouselContent() {
-  //   fetch(`${urlContext.baseUrl}/get-home-text-content`)
-  //   .then( res => res.json())
-  //   .then( data => {
-  //     const headingContent = data.content.find(
-  //       e => e.type.name === "heading" && e.location.section === "testimonials"
-  //     )
-  //     setHeadingText(headingContent);
-  //     setTexts(sortContent(data.content, "text", "testimonials"));
-  //     setAuthors(sortContent(data.content, "author", "testimonials"));
-  //   })
-  //   .catch( err => {
-  //     console.log(err)
-  //   })
-  // }
-
   function sortContent(arr, typeName, section) {
     const content = arr.filter( e => {
       return e.type.name === typeName && e.location.section === section;
@@ -96,6 +80,7 @@ function TestimonialsCarousel() {
         <CarouselControls 
           rotateCardsLeft={rotateCardsLeft}
           rotateCardsRight={rotateCardsRight}
+          infinite={true}
         />
       </section>
       )

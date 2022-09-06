@@ -9,11 +9,25 @@ function CarouselControls(props) {
 
   function handleLeftClick() {
     props.rotateCardsLeft()
-    setActiveSelector(activeSelector === 1 ? 3 : activeSelector - 1)
+    setActiveSelector( () => {
+      if(props.infinite) {
+        return activeSelector === 1 ? 3 : activeSelector - 1
+      } else {
+        return activeSelector === 1 ? 1 : activeSelector - 1
+      }
+    })
+    // setActiveSelector(activeSelector === 1 ? 3 : activeSelector - 1)
   }
   function handleRightClick() {
     props.rotateCardsRight()
-    setActiveSelector(activeSelector === 3 ? 1 : activeSelector + 1)
+    setActiveSelector( () => {
+      if(props.infinite) {
+        return activeSelector === 3 ? 1 : activeSelector + 1
+      } else {
+        return activeSelector === 3 ? 3 : activeSelector + 1
+      }
+    })
+    // setActiveSelector(activeSelector === 3 ? 1 : activeSelector + 1)
   }
 
 

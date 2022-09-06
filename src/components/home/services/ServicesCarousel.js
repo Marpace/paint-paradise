@@ -118,6 +118,7 @@ function ServicesCarousel(props) {
           <CarouselControls
             rotateCardsLeft={rotateCardsLeft}
             rotateCardsRight={rotateCardsRight}
+            infinite={true}
           />
         </div>
       </section>
