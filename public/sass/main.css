@@ -1721,88 +1721,70 @@ p {
   flex-wrap: wrap;
 }
 
-.gallery-grid {
+.grid {
   width: 95%;
   max-width: 900px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
   align-items: flex-start;
+  gap: 8px;
   margin: 50px auto;
 }
-.gallery-grid .column {
-  flex: 43%;
-  margin: 0 5px;
+.grid .column {
+  width: 47%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
-@media only screen and (min-width: 992px) {
-  .gallery-grid .column {
-    flex: 30%;
-    margin: 0 10px;
-  }
-}
-.gallery-grid .column-item {
-  background: grey;
-  margin-top: 5px;
-  border-radius: 10px;
-  background-size: cover;
+.grid .column .gallery-image {
   width: 100%;
-  object-fit: cover;
-  cursor: pointer;
 }
-@media only screen and (min-width: 992px) {
-  .gallery-grid .column-item {
-    margin-top: 20px;
-  }
-}
-.gallery-grid .column .gallery-xs {
+.grid .column .gallery-xs {
   height: 100px;
 }
-.gallery-grid .column .gallery-s {
+.grid .column .gallery-s {
   height: 150px;
 }
-.gallery-grid .column .gallery-m {
+.grid .column .gallery-m {
   height: 200px;
 }
-.gallery-grid .column .gallery-l {
+.grid .column .gallery-l {
   height: 300px;
 }
-.gallery-grid .column .gallery-xl {
+.grid .column .gallery-xl {
   height: 400px;
 }
 @media only screen and (min-width: 768px) {
-  .gallery-grid .column .gallery-xs {
+  .grid .column .gallery-xs {
     height: 200px;
   }
-  .gallery-grid .column .gallery-s {
+  .grid .column .gallery-s {
     height: 250px;
   }
-  .gallery-grid .column .gallery-m {
+  .grid .column .gallery-m {
     height: 300px;
   }
-  .gallery-grid .column .gallery-l {
+  .grid .column .gallery-l {
     height: 400px;
   }
-  .gallery-grid .column .gallery-xl {
+  .grid .column .gallery-xl {
     height: 500px;
   }
 }
 @media only screen and (min-width: 768px) {
-  .gallery-grid .column .gallery-xs {
+  .grid .column .gallery-xs {
     height: 200px;
   }
-  .gallery-grid .column .gallery-s {
+  .grid .column .gallery-s {
     height: 250px;
   }
-  .gallery-grid .column .gallery-m {
+  .grid .column .gallery-m {
     height: 300px;
   }
-  .gallery-grid .column .gallery-l {
+  .grid .column .gallery-l {
     height: 400px;
-  }
-  .gallery-grid .column .gallery-xl {
-    height: 500px;
   }
 }
 

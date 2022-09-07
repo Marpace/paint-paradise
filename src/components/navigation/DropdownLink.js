@@ -28,7 +28,7 @@ function NavbarDropdownItem(props) {
                     <div className="icon-back"></div>
                 </div>
             </div>
-            <Link to={props.url} className={`drop-down-link__anchor ${context.editingModeOn ? "link-disabled" : ""}`}>
+            <Link onClick={props.toggleMenu} to={props.url} className={`drop-down-link__anchor ${context.editingModeOn ? "link-disabled" : ""}`}>
                 {editState ? context.textValue : props.linkName}
             </Link>
         </div>

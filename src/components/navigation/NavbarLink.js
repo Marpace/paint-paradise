@@ -94,6 +94,7 @@ function NavbarLink(props) {
                         linkName={item.linkName}
                         contentId={item.contentId}
                         url={item.url}
+                        toggleMenu={props.toggleMenu}
                     />
                     ))}
                 </div>

@@ -5,7 +5,8 @@ import {Link} from "react-router-dom";
 function CMSInterface(props) {
 
 
-  const baseUrl = "http://localhost:8080"
+  // const baseUrl = "http://localhost:8080"
+  const baseUrl = "https://paint-paradise.herokuapp.com"
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showFailMessage, setShowFailMessage] = useState(false);
   const [successMessage, setSuccessMessage] = useState("Content updated successfully!");
@@ -151,7 +152,7 @@ function CMSInterface(props) {
           id="image-upload" 
           type="file" 
           value={fileInputValue}></input>
-          <label className="image-upload-form__label" htmlFor="image-upload"><img src="/images/cms/plus_icon.png"></img>Add photo</label>
+          <label className="image-upload-form__label" htmlFor="image-upload"><img src="./images/cms/plus_icon.png"></img>Add photo</label>
           <button className={`image-upload-form__btn ${filesChosen.length > 0 ? "show" : "hidden"}`}>Upload</button>
           <button onClick={handleCancelImageUpload} className="image-upload-form__btn">Cancel</button>
           <div className="files-chosen">

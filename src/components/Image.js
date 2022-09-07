@@ -1,19 +1,39 @@
 import {EditContext} from "./cms/CMS";
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 
 
 function Image(props) {
 
   const context = useContext(EditContext);
+  const [randomShape, setRandomShape] = useState("");
+
+  useEffect(() => {
+    setRandomShape(random)
+  }, [])
 
   function editImage(e){
     if(!context.editingModeOn) return;
     context.editImage(e.target.id)
   }
 
+  function random() {
+    const n = Math.floor(Math.random() * 4)
+    switch (n) {
+        case 0:
+            return "gallery-xs"
+        case 1:
+            return "gallery-s"
+        case 2:
+            return "gallery-m"
+        case 3:
+            return "gallery-l"
+        default:
+            break;
+    }
+  }
 
   return(
-    <div className={props.className} >
+    <div className={props.className === "" ? `${randomShape} gallery-image` : props.className} >
       <img className="editable-image" src={
         context.selectedImage === props.image._id
         ? context.previewImgUrl === undefined ? props.image.path : context.previewImgUrl 
@@ -27,3 +47,5 @@ function Image(props) {
 }
 
 export default Image;
+
+
