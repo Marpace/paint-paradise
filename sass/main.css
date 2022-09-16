@@ -59,6 +59,17 @@ html, body {
   border-radius: 8px;
 }
 
+.selectable-image {
+  cursor: pointer;
+}
+.selectable-image:hover {
+  opacity: 0.5;
+}
+
+.selected-image {
+  opacity: 0.5;
+}
+
 /* ****************  FONTS  **************** */
 @font-face {
   font-family: "Gotham Book";
@@ -1740,51 +1751,52 @@ p {
 }
 .grid .column .gallery-image {
   width: 100%;
+  position: relative;
+  cursor: pointer;
 }
-.grid .column .gallery-xs {
+.grid .column .gallery-image:hover > .edit-icon {
+  display: block;
+}
+.grid .column .gallery-image .edit-icon {
+  display: none;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.grid .column .size-1 {
   height: 100px;
 }
-.grid .column .gallery-s {
+.grid .column .size-2 {
   height: 150px;
 }
-.grid .column .gallery-m {
+.grid .column .size-3 {
   height: 200px;
 }
-.grid .column .gallery-l {
+.grid .column .size-4 {
   height: 300px;
 }
-.grid .column .gallery-xl {
+.grid .column .size-5 {
   height: 400px;
 }
 @media only screen and (min-width: 768px) {
-  .grid .column .gallery-xs {
+  .grid .column .size-1 {
     height: 200px;
   }
-  .grid .column .gallery-s {
+  .grid .column .size-2 {
     height: 250px;
   }
-  .grid .column .gallery-m {
+  .grid .column .size-3 {
     height: 300px;
   }
-  .grid .column .gallery-l {
+  .grid .column .size-4 {
     height: 400px;
   }
-  .grid .column .gallery-xl {
+  .grid .column .size-5 {
     height: 500px;
-  }
-}
-@media only screen and (min-width: 768px) {
-  .grid .column .gallery-xs {
-    height: 200px;
-  }
-  .grid .column .gallery-s {
-    height: 250px;
-  }
-  .grid .column .gallery-m {
-    height: 300px;
-  }
-  .grid .column .gallery-l {
-    height: 400px;
   }
 }
 
@@ -1974,7 +1986,120 @@ p {
   background-color: black;
   color: white;
 }
-.cms .cms-interface__edit .image-upload-form .files-chosen p {
+.cms .cms-interface__edit .gallery-options {
+  display: flex;
+  flex-wrap: wrap;
+  width: 45%;
+  gap: 10px;
+}
+.cms .cms-interface__edit .gallery-options .gallery-upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cms .cms-interface__edit .gallery-options .gallery-upload-form__input {
+  display: none;
+}
+.cms .cms-interface__edit .gallery-options .gallery-upload-form__label {
+  width: 245px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: white;
+  cursor: pointer;
+}
+.cms .cms-interface__edit .gallery-options .gallery-upload-form__label:hover {
+  background-color: rgb(168, 168, 168);
+}
+.cms .cms-interface__edit .gallery-options .gallery-upload-form__btn {
+  width: 245px;
+  height: 30px;
+  border: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.cms .cms-interface__edit .gallery-options .gallery-upload-form__btn:hover {
+  transition-property: background-color;
+  transition-duration: 300ms;
+  background-color: black;
+  color: white;
+}
+.cms .cms-interface__edit .gallery-options .remove-photos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.cms .cms-interface__edit .gallery-options .remove-photos p {
+  color: white;
+}
+.cms .cms-interface__edit .gallery-options .remove-photos .cms-modal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(166, 166, 166, 0.5);
+}
+.cms .cms-interface__edit .gallery-options .remove-photos .cms-modal__body {
+  height: 200px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px;
+  background-color: white;
+}
+.cms .cms-interface__edit .gallery-options .remove-photos .cms-modal__body-text {
+  color: #1D1330;
+}
+.cms .cms-interface__edit .gallery-options .remove-photos .cms-modal__body-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.cms .cms-interface__edit .gallery-options .remove-photos .cms-modal__body-buttons .cms-modal__btn {
+  border: none;
+  width: 45%;
+  padding: 10px 0;
+  background-color: #1D1330;
+  color: white;
+  transition-property: background-color;
+  transition-duration: 300ms;
+  cursor: pointer;
+  font-family: "Gotham Book", sans-serif;
+  font-size: 1rem;
+}
+.cms .cms-interface__edit .gallery-options .remove-photos .cms-modal__body-buttons .cms-modal__btn:hover {
+  background-color: white;
+  color: #1D1330;
+}
+.cms .cms-interface__edit .gallery-options .remove-photos-btn {
+  width: 245px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: lighter;
+  font-family: "Gotham Book", sans-serif;
+}
+.cms .cms-interface__edit .gallery-options .remove-photos-btn:hover {
+  background-color: rgb(168, 168, 168);
+}
+.cms .cms-interface__edit .files-chosen p {
   color: white;
 }
 .cms .editable-area {
@@ -1990,4 +2115,9 @@ p {
 
 .link-disabled {
   pointer-events: none;
+}
+
+.button-disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }

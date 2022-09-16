@@ -14,53 +14,53 @@
 
         .gallery-image {
             width: 100%;
+            position: relative;
+            cursor: pointer;
+
+            &:hover > .edit-icon {
+                display: block;
+            }
+            .edit-icon {
+                display: none;
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                padding: 10px;
+                background-color: white;
+                border-radius: 8px;
+                cursor: pointer;
+            }
         }
-        .gallery-xs{
+        .size-1{
             height: 100px;
         }
-        .gallery-s{
+        .size-2{
             height: 150px;
         }
-        .gallery-m{
+        .size-3{
             height: 200px;
         }
-        .gallery-l {
+        .size-4 {
             height: 300px;
         }
-        .gallery-xl{
+        .size-5{
             height: 400px;
         }
         @include responsive($tablet){
-            .gallery-xs{
+            .size-1{
                 height: 200px;
             }
-            .gallery-s{
+            .size-2{
                 height: 250px;
             }
-            .gallery-m{
+            .size-3{
                 height: 300px;
             }
-            .gallery-l {
+            .size-4 {
                 height: 400px;
             }
-            .gallery-xl{
+            .size-5{
                 height: 500px;
-            }
-        }
-        @include responsive($tablet){
-            .gallery-xs{
-                height: 200px;
-            }
-            .gallery-s{
-                height: 250px;
-            }
-            .gallery-m{
-                height: 300px;
-            }
-            .gallery-l {
-                height: 400px;
-            }
-            .gallery-xl{
             }
         }
     }

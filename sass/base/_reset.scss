@@ -61,3 +61,13 @@ html,body
   object-fit: cover;
   border-radius: 8px;
 }
+.selectable-image {
+  cursor: pointer;
+
+  &:hover {
+    opacity: .5;
+  }
+}
+.selected-image {
+  opacity: .5;
+}
