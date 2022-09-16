@@ -22,6 +22,7 @@ function CMS() {
   const [textValue, setTextValue] = useState("");
   const [showEditForm, setShowEditForm] = useState(false);
   const [showEditImageForm, setShowEditImageForm] = useState(false);
+  const [selectedImages, setSelectedImages] = useState([]);
   const [editDropdown, setEditDropdown] = useState(false);
   const [contentId, setContentId] = useState();
   const [context, setContext] = useState({
@@ -50,6 +51,16 @@ function CMS() {
         }
       })
       console.log(id)
+    },
+    pushId: (id) => {
+      setSelectedImages( prev => {
+        if(prev.includes(id)){
+          return prev.filter(item => item !== id)
+        } else {
+          return [...prev, id]
+        }
+      })
+
     }
   })
 
@@ -62,10 +73,10 @@ function CMS() {
     })
   }, [editDropdown])
 
+
   function setDropdownEditState() {
     setEditDropdown(editDropdown ? false : true)
   }
-
 
   function getTextValue(text) {
     setTextValue(text);
@@ -86,6 +97,7 @@ function CMS() {
           showEditForm={showEditForm}
           showEditImageForm={showEditImageForm}
           contentId={contentId}
+          selectedImages={selectedImages}
           getTextValue={getTextValue}
           setEditDropdown={setDropdownEditState}
           setShowEditForm={setShowEditForm}

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
+import Modal from "../Modal"
 
 
 function CMSInterface(props) {
-
 
   // const baseUrl = "http://localhost:8080"
   const baseUrl = "https://paint-paradise.herokuapp.com"
@@ -13,8 +13,21 @@ function CMSInterface(props) {
   const [failMessage, setFailMessage] = useState("Could no update content!");
   const [filesChosen, setFilesChosen] = useState([]);
   const [previewImgUrl, setPreviewImgUrl] = useState(undefined);
-  const [fileInputValue, setFileInputValue] = useState("")
+  const [singleFileInputValue, setSingleFileInputValue] = useState("")
+  const [multipleFileInputValue, setMultipleFileInputValue] = useState("")
+  const [gallery, setGallery] = useState();
+  const [chooseImages, setChooseImages] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const location = useLocation();
 
+  useEffect(() => {
+    if(location.pathname.includes("Gallery") && !props.showEditImageForm && !props.showEditForm) {
+      setGallery(true)
+    } else {
+      setGallery(false)
+    }
+    console.log(gallery)
+  }, [location, props.showEditImageForm, props.showEditForm])
 
   useEffect(() => {
     props.setContext( prev => {
@@ -34,12 +47,17 @@ function CMSInterface(props) {
     props.setEditDropdown();
   }
 
-  function handleFileInputChange(e) {
+  function handleSingleFileInputChange(e) {
     if(e.target.value === "") return
     setFilesChosen(e.target.files)
     setPreviewImgUrl(URL.createObjectURL(e.target.files[0]))
-    setFileInputValue(e.target.value)
-    console.log(e.target.value)
+    setSingleFileInputValue(e.target.value)
+  }
+
+  function handleMultipleFileInputChange(e) {
+    if(e.target.value === "") return
+    setFilesChosen(e.target.files)
+    setMultipleFileInputValue(e.target.value)
   }
   
   function handleSubmitImage(e) {
@@ -56,22 +74,82 @@ function CMSInterface(props) {
     })
     .then( res => {
       if(res.status === 200) {
-        console.log("Image updated")
-        alert("Image updated")
+        console.log("Image updated");
+        alert("Image updated");
+        window.location.reload();
         props.setShowEditImageForm(false)
-        setFileInputValue("")
+        setSingleFileInputValue("")
+      }
+    })
+    .catch( err => console.log(err))
+
+    
+  }
+  
+  //uploads images to the gallery page
+  function handleGalleryUpload(e) {
+    e.preventDefault();
+    const files = e.target.firstChild.files
+    const formData = new FormData();
+  
+    for(let i = 0; i < files.length; i++) {
+      formData.append("image", files[i])
+    }
+    fetch(`${baseUrl}/upload-gallery-images`, {
+      method: "POST",
+      body: formData
+    })
+    .then( res => {
+      if(res.status === 200) {
+        alert("Images uploaded successfully!")
+        setMultipleFileInputValue("");
+        window.location.reload();
       }
     })
     .catch( err => console.log(err))
   }
-  
 
+  // sets the choosing state so the user can select images to be deleted
+  function handleRemoveImages(e) {
+    setChooseImages(true);
+    props.setContext( prev => {
+      return {
+        ...prev,
+        chooseImages: true
+      }
+    })
+  }
+
+  //permanently deletes the images selected
+  function deleteImages() {
+    fetch(`${baseUrl}/delete-gallery-images`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "Application/json"
+      },
+      body: JSON.stringify({imageIds: props.selectedImages})
+    })
+    .then((res) => {
+      toggleModal();
+      res.status === 200 
+        ? window.location.reload()
+        : alert("Something went wrong!")
+    })
+    .catch( err => console.log(err))
+  }
 
   function handleCancelImageUpload(e) {
-    e.preventDefault()
+    e.preventDefault();
     setPreviewImgUrl(undefined);
     setFilesChosen([]);
-    props.setShowEditImageForm(false)
+    props.setShowEditImageForm(false);
+    setChooseImages(false)
+    props.setContext( prev => {
+      return {
+        ...prev,
+        chooseImages: false
+      }
+    })
   }
 
   function handleSaveClick(e){
@@ -116,6 +194,10 @@ function CMSInterface(props) {
     })
   }
 
+  function toggleModal() {
+    setShowModal(showModal ? false : true)
+  }
+
   return(
     <section className="cms-interface">
       <div className="cms-interface__banner">
@@ -132,6 +214,7 @@ function CMSInterface(props) {
           <Link className="cms-link" to="/admin/Gallery">Gallery</Link>
           <button onClick={handleDropdownBtnClick} className="cms-link">Dropdown</button>
         </div>
+
         <form className={`cms-interface__edit-form ${props.showEditForm ? "show-flex" : "hidden"}`}>
           <textarea onChange={handleChange} className="form-input" rows={2} value={props.textValue}></textarea>
           <div className="form-buttons">
@@ -141,28 +224,80 @@ function CMSInterface(props) {
             <p className={`fail-message ${showFailMessage ? "show" : ""}`}>{failMessage}</p>
           </div>
         </form>
+
         <form 
           onSubmit={handleSubmitImage} 
           className={`cms-interface__edit-form image-upload-form ${props.showEditImageForm ? "show-flex" : "hidden"}`}
           encType="multipart/form-data">
-
           <input 
-          onChange={handleFileInputChange} 
-          className="image-upload-form__input" 
-          id="image-upload" 
-          type="file" 
-          value={fileInputValue}></input>
-          <label className="image-upload-form__label" htmlFor="image-upload"><img src="./images/cms/plus_icon.png"></img>Add photo</label>
+            onChange={handleSingleFileInputChange} 
+            className="image-upload-form__input" 
+            id="image-upload" 
+            type="file" 
+            value={singleFileInputValue}>
+          </input>
+          <label className="image-upload-form__label" htmlFor="image-upload">
+            <img src="./images/cms/plus_icon.png"></img>Add photo</label>
           <button className={`image-upload-form__btn ${filesChosen.length > 0 ? "show" : "hidden"}`}>Upload</button>
           <button onClick={handleCancelImageUpload} className="image-upload-form__btn">Cancel</button>
           <div className="files-chosen">
             <p>{filesChosen.length > 0 ? filesChosen[0].name : ""}</p>
           </div>
         </form>
+
+        <div className={`gallery-options ${gallery ? "show-flex" : "hidden"}`}>
+          <form 
+            onSubmit={handleGalleryUpload} 
+            className={`gallery-upload-form ${chooseImages ? "hidden" : ""}`}
+            encType="multipart/form-data">
+            <input 
+            onChange={handleMultipleFileInputChange} 
+            className="gallery-upload-form__input" 
+            id="gallery-image-upload" 
+            type="file" 
+            value={multipleFileInputValue}
+            multiple></input>
+            <label className="gallery-upload-form__label" htmlFor="gallery-image-upload"><img src="./images/cms/plus_icon.png"></img>Add photos</label>
+            <button className={`gallery-upload-form__btn ${filesChosen.length > 0 ? "show" : "hidden"}`}>Upload</button>
+            <div className="files-chosen">
+              <p>{filesChosen.length > 0 ? `${filesChosen.length} images selected` : ""}</p>
+            </div>
+          </form>
+          <button 
+            onClick={handleRemoveImages} 
+            className={`remove-photos-btn ${filesChosen.length > 0 || chooseImages ? "hidden" : "show-flex"}`}>
+            <img src="./images/cms/trash_icon.png"></img>
+            Remove photos
+          </button>
+          <div className={`remove-photos ${chooseImages ? "" : "hidden"}`}>
+            <p>
+              {props.selectedImages.length > 0 
+                ? `${props.selectedImages.length} images selected`
+                : "Please select the images you want to delete"
+              }
+            </p>
+            <button
+              onClick={toggleModal} 
+              className={`remove-photos-btn ${props.selectedImages.length === 0 ? "button-disabled" : ""}`}>
+              Remove
+            </button>
+            <Modal 
+              text="Are you sure you want to delete the selected images?"
+              showModal={showModal}
+              toggleModal={toggleModal}
+              delete={deleteImages}
+            />
+          </div>
+          <button 
+            onClick={handleCancelImageUpload} 
+            className={`image-upload-form__btn ${filesChosen.length > 0 || chooseImages ? "show" : "hidden"}`}>
+            Cancel
+          </button>
+        </div>
+
       </div>
     </section>
   )
 }
 
 export default CMSInterface;
-

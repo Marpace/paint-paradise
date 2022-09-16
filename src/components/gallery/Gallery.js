@@ -33,21 +33,17 @@ function Gallery() {
     setImgUrl(url)
   }
 
-  function closeModal() {
-    setModalOpen(false);
-  }
-
   if(contentLoaded) {
     return (
       <div className="gallery">
-        {/* <Grid toggleModal={toggleModal}/> */}
         <Grid 
           images={images}
+          toggleModal={toggleModal}
         />
         <ImageModal 
           modalOpen={modalOpen}
           imgUrl={imgUrl}
-          closeModal={closeModal}
+          toggleModal={toggleModal}
         />
       </div>
     )

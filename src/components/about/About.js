@@ -32,7 +32,7 @@ function About() {
     .then( res => res.json())
     .then( data => {
       setHeaderImage(data.content.find(e => e.location.section === "header"))
-      setInstaImages(data.content.filter(e => e.location.section === "instagram"))
+      setInstaImages(data.content.filter(e => e.location.section === "instagram").sort((a, b) => a.order - b.order))
       setContentLoaded(true)
     })
     .catch( err => console.log(err))

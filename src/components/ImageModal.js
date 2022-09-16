@@ -1,13 +1,9 @@
 function ImageModal(props) {
 
-  function handleClick() {
-    props.closeModal();
-  }
-
   return (
     <div className={`modal ${props.modalOpen ? "modal-open" : ""}`}>
       <div className="modal-content">
-        <div onClick={handleClick} className="modal-close-btn">
+        <div onClick={props.toggleModal} className="modal-close-btn">
           <div className="modal-close-btn-div"></div>
           <div className="modal-close-btn-div"></div>
         </div>

@@ -1,45 +1,39 @@
 import {EditContext} from "./cms/CMS";
-import {useContext, useEffect, useState} from "react";
-
+import {useContext, useState} from "react";
+import {useLocation} from "react-router-dom";
 
 function Image(props) {
 
-  const context = useContext(EditContext);
-  const [randomShape, setRandomShape] = useState("");
+  const [imageSelected, setImageSelected] = useState(false);
 
-  useEffect(() => {
-    setRandomShape(random)
-  }, [])
+  const context = useContext(EditContext);
+  const location = useLocation().pathname
+
 
   function editImage(e){
     if(!context.editingModeOn) return;
     context.editImage(e.target.id)
   }
 
-  function random() {
-    const n = Math.floor(Math.random() * 4)
-    switch (n) {
-        case 0:
-            return "gallery-xs"
-        case 1:
-            return "gallery-s"
-        case 2:
-            return "gallery-m"
-        case 3:
-            return "gallery-l"
-        default:
-            break;
+  function handleClick(e) {
+    if(context.editingModeOn) {
+      if(!location.includes("Gallery") || !context.chooseImages) return;
+      setImageSelected(imageSelected ? false : true);
+      context.pushId(e.target.id);
+    } else {
+      props.toggleModal(props.image.path);
     }
   }
 
+
   return(
-    <div className={props.className === "" ? `${randomShape} gallery-image` : props.className} >
-      <img className="editable-image" src={
+    <div onClick={handleClick} className={props.className + ` ${imageSelected && context.chooseImages ? "selected-image" : ""}`} >
+      <img id={props.image.googleId} className={`editable-image ${context.chooseImages ? "selectable-image" : ""}`} src={
         context.selectedImage === props.image._id
         ? context.previewImgUrl === undefined ? props.image.path : context.previewImgUrl 
         : props.image.path
       }></img>
-      <div id={props.image._id} onClick={editImage} className="edit-icon">
+      <div id={props.image._id} onClick={editImage} className={`edit-icon ${context.chooseImages ? "hidden" : ""}`}>
         <img id={props.image._id} className="edit-icon__icon" src="/images/cms/edit_icon.png"></img>
       </div>
     </div>
