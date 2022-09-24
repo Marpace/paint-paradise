@@ -1,34 +1,34 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import {EditContext} from "../cms/CMS"
+import {CMSContext} from "../cms/CMS"
 import DropdownLink from "./DropdownLink"
 
 
 function NavbarLink(props) {
 
     const path = props.linkName === "Home" ? "" : props.linkName
-    const context = useContext(EditContext)
+    const context = useContext(CMSContext)
     const location = useLocation().pathname.split("/")[1];
     const [editState, setEditState] = useState(false)
     const [elementState, setElementState] = useState(undefined);
     const [dropdownOpen, setDropdownOpen] = useState(false);
-    const items = [
-        {
-            linkName: props.dropdownLinks[0].content,
-            contentId: props.dropdownLinks[0]._id,
-            url: "/Services/private-paint-parties"
-        },
-        {
-            linkName: props.dropdownLinks[1].content,
-            contentId: props.dropdownLinks[1]._id, 
-            url: "/Services/paint-night"
-        },
-        {
-            linkName: props.dropdownLinks[2].content,
-            contentId: props.dropdownLinks[2]._id,
-            url: "/Services/paint-kits"
-        }
-      ]
+    // const items = [
+    //     {
+    //         linkName: props.dropdownLinks[0].content,
+    //         contentId: props.dropdownLinks[0]._id,
+    //         url: "/Services/private-paint-parties"
+    //     },
+    //     {
+    //         linkName: props.dropdownLinks[1].content,
+    //         contentId: props.dropdownLinks[1]._id, 
+    //         url: "/Services/paint-night"
+    //     },
+    //     {
+    //         linkName: props.dropdownLinks[2].content,
+    //         contentId: props.dropdownLinks[2]._id,
+    //         url: "/Services/paint-kits"
+    //     }
+    //   ]
 
     let activeLink = location === "" ? "Home" : location
 
@@ -58,8 +58,8 @@ function NavbarLink(props) {
     }
 
     function toggleDropdown() {
-        if(dropdownOpen) setDropdownOpen(false);
-        else setDropdownOpen(true);
+        console.log("toggle")
+        setDropdownOpen( dropdownOpen ? false : true)
     }
 
     if(props.dropdown === "hasDropdown") {
@@ -88,12 +88,12 @@ function NavbarLink(props) {
                 </img>
 
                 <div className={`drop-down-menu ${dropdownOpen ? "drop-down-open" : ""} ${context.editDropdown ? "cms-dropdown" : ""}`}>
-                    {items.map( item => (
+                    {props.dropdownLinks.map( item => (
                     <DropdownLink 
-                        key={item.contentId}
-                        linkName={item.linkName}
-                        contentId={item.contentId}
-                        url={item.url}
+                        key={item._id}
+                        linkName={item.content}
+                        contentId={item._id}
+                        url={item.type.options}
                         toggleMenu={props.toggleMenu}
                     />
                     ))}

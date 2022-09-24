@@ -26,7 +26,6 @@ function CMSInterface(props) {
     } else {
       setGallery(false)
     }
-    console.log(gallery)
   }, [location, props.showEditImageForm, props.showEditForm])
 
   useEffect(() => {
@@ -205,7 +204,7 @@ function CMSInterface(props) {
       </div>
       <div className="cms-interface__edit">
         <div className="cms-interface__edit-links">
-          <Link className="cms-link" to="/admin">Home</Link>
+          <Link className="cms-link" to="/admin/">Home</Link>
           <Link className="cms-link" to="/admin/Services">Services</Link>
           <Link className="cms-link" to="/admin/Services/private-paint-parties">Private Parties</Link>
           <Link className="cms-link" to="/admin/Services/paint-night">Paint Night</Link>
@@ -213,6 +212,7 @@ function CMSInterface(props) {
           <Link className="cms-link" to="/admin/About">About</Link>
           <Link className="cms-link" to="/admin/Gallery">Gallery</Link>
           <button onClick={handleDropdownBtnClick} className="cms-link">Dropdown</button>
+          <button onClick={props.userLogout} className="logout-btn">Log out</button>
         </div>
 
         <form className={`cms-interface__edit-form ${props.showEditForm ? "show-flex" : "hidden"}`}>

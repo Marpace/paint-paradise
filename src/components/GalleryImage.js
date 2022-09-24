@@ -1,10 +1,10 @@
-import {EditContext} from "./cms/CMS";
+import {CMSContext} from "./cms/CMS";
 import {useContext} from "react";
 
 
 function GalleryImage(props) {
 
-  const context = useContext(EditContext);
+  const context = useContext(CMSContext);
 
   function editImage(e){
     if(!context.editingModeOn) return;

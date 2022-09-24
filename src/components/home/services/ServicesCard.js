@@ -1,12 +1,12 @@
 import PurpleButton from "../../PurpleButton";
-import {EditContext} from "../../cms/CMS";
+import {CMSContext} from "../../cms/CMS";
 import {useState, useContext, useEffect} from "react";
 import { Link } from "react-router-dom";
 import Paragraph from "../../Paragraph";
 
 function ServicesCard(props) {
 
-  const context = useContext(EditContext);
+  const context = useContext(CMSContext);
   const [titleEditState, setTitleEditState] = useState(false);
 
   const [titleElementState, setTitleElementState] = useState(undefined);

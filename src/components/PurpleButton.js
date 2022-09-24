@@ -1,12 +1,12 @@
 
-import {EditContext} from "./cms/CMS"
+import {CMSContext} from "./cms/CMS"
 import { useContext, useEffect, useState } from "react";
 
 
 
 function PurpleButton(props) {
   
-  const context = useContext(EditContext);
+  const context = useContext(CMSContext);
   const [editState, setEditState] = useState(false)
   const [elementState, setElemenetState] = useState(undefined);
 

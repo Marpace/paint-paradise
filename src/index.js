@@ -17,14 +17,16 @@ import CMS from './components/cms/CMS';
 import ServicesIndex from './components/services/ServicesIndex';
 import PaintKits from './components/services/paint-kits/PaintKits';
 import Home from './components/home/Home';
+import CMSLogin from './components/cms/CMSLogin';
+import ProtectedRoutes from './components/cms/ProtectedRoutes';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <HashRouter>
     <Routes>
-  
-      <Route path="/" element={<App editingModeOn={false} />}> 
+      {/* routes for the actual web page */}
+      <Route path="/" element={<App />}> 
         <Route index element={<Home />}/>
         <Route path="About" element={<About/>} />
         <Route path="Services" element={<Services />}>
@@ -36,16 +38,20 @@ root.render(
         <Route path="Gallery" element={<Gallery />} />
       </Route>
 
+      {/* routes for the CMS interface */}
       <Route path="admin" element={<CMS />} >
-        <Route index element={<Home />}/>
-        <Route path="About" element={<About/>} />
-        <Route path="Services" element={<Services />}>
-          <Route index element={<ServicesIndex />} />
-          <Route path="private-paint-parties" element={<PrivateParties/>}/>
-          <Route path="paint-night" element={<PaintNight/>}/>
-          <Route path="paint-kits" element={<PaintKits/>}/>
+        {/* <Route path="login" element={<CMSLogin />}/> */}
+        <Route element={<ProtectedRoutes />}>
+          <Route index element={<Home />}/>
+          <Route path="About" element={<About/>} />
+          <Route path="Services" element={<Services />}>
+            <Route index element={<ServicesIndex />} />
+            <Route path="private-paint-parties" element={<PrivateParties/>}/>
+            <Route path="paint-night" element={<PaintNight/>}/>
+            <Route path="paint-kits" element={<PaintKits/>}/>
+          </Route>
+          <Route path="Gallery" element={<Gallery />} />
         </Route>
-        <Route path="Gallery" element={<Gallery />} />
       </Route>
       <Route
       path="*"

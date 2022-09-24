@@ -1,10 +1,10 @@
-import {EditContext} from "./cms/CMS"
+import {CMSContext} from "./cms/CMS"
 import {useState, useContext} from "react";
 
 
 function CarouselControls(props) {
   
-  const context = useContext(EditContext)
+  const context = useContext(CMSContext)
   const [activeSelector, setActiveSelector] = useState(1);
 
   function handleLeftClick() {

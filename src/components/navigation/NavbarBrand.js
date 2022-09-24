@@ -1,11 +1,11 @@
-import {EditContext} from "../cms/CMS";
+import {CMSContext} from "../cms/CMS";
 import {UrlContext} from "../App";
 import {useState, useContext, useEffect} from "react";
 
 function NavbarBrand(props) {
 
     const urlContext = useContext(UrlContext);
-    const context = useContext(EditContext);
+    const context = useContext(CMSContext);
     const [editState, setEditState] = useState(false)
     const [elementState, setElementState] = useState(undefined);
     const [content, setContent] = useState("");

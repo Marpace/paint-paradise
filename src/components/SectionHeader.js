@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import {EditContext} from "./cms/CMS"
+import {CMSContext} from "./cms/CMS"
 
 
 function SectionHeader(props) {
 
-    const context = useContext(EditContext)
+    const context = useContext(CMSContext)
     const [editState, setEditState] = useState(false)
     const [elementState, setElementState] = useState(undefined);
 

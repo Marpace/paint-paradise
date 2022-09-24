@@ -1,13 +1,14 @@
 import { useContext, useEffect, useState } from "react";
-import {EditContext} from "../../cms/CMS"
+import {CMSContext} from "../../cms/CMS"
 import Paragraph from "../../Paragraph";
+import Image from "../../Image"
 
 
 
 function ContentBlock(props) {
 
 
-  const context = useContext(EditContext)
+  const context = useContext(CMSContext)
   const [titleEditState, setTitleEditState] = useState(false)
   const [titleElementState, setTitleElementState] = useState(undefined);
   const [textElementState, setTextElementState] = useState(undefined);
@@ -25,9 +26,13 @@ function ContentBlock(props) {
 
   return (
     <div className="content-item">
-      <div className="content-item__icon item-icon-1">
-        <img className="content-item__icon-img" src={props.imageSrc} alt=""></img>
-      </div>
+      {/* <div className="content-item__icon item-icon-1"> */}
+      <Image 
+        image={props.image}
+        className="content-item__icon item-icon-1"
+      />
+        {/* <img className="content-item__icon-img" src={props.imageSrc} alt=""></img> */}
+      {/* </div> */}
       <h2 
         onClick={editTitleContent} 
         className={`content-item__title ${context.editingModeOn ? "editable" : ""}`}>

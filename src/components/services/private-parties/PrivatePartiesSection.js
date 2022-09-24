@@ -1,6 +1,6 @@
 import SectionHeader from "../../SectionHeader";
 import BulletPoint from "../BulletPoint";
-import {EditContext} from "../../cms/CMS";
+import {CMSContext} from "../../cms/CMS";
 import {useContext, useState, useEffect} from "react";
 import Paragraph from "../../Paragraph";
 import Image from "../../Image";
@@ -10,7 +10,7 @@ import Image from "../../Image";
 function PrivatePartiesSection(props) {
 
 
-  const context = useContext(EditContext);
+  const context = useContext(CMSContext);
   const [selectedImg, setSelectedImg] = useState();
 
   function editImage(e) {

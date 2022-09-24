@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import PurpleButton from "../PurpleButton";
 import SectionHeader from "../SectionHeader";
-import {EditContext} from "../cms/CMS"
+import {CMSContext} from "../cms/CMS"
 import { useContext} from "react";
 import Paragraph from "../Paragraph";
 import Image from "../Image"
@@ -9,7 +9,7 @@ import Image from "../Image"
 
 function ServicesSection(props) {
 
-  const context = useContext(EditContext);
+  const context = useContext(CMSContext);
 
   return (
     <section className="services__section">

@@ -1,0 +1,66 @@
+.login {
+  height: 100vh;
+  @include flex_centered(column);
+  background-color: $light_purple;
+
+  &__body {
+    @include flex_centered(column);
+    gap: 50px;
+    width: 320px;
+    padding: 30px 0;
+    background-color: white;
+    box-shadow: 5px 5px 21px -12px $dark-purple;
+
+    &-header {
+      font-size: 2rem;
+      font-family: "Gotham Ultra", sans-serif;
+      color: $purple;
+      transform: rotate(-1deg);
+    }
+    .login-form {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      &__input {
+        padding: 3px;
+        border: none;
+        border-bottom: 1px solid $dark-purple;
+        text-align: center;
+        font-size: 1rem;
+      }
+      &__button {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: $dark-purple;
+        color: $light_purple;
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
+        transition-property: background-color;
+        transition-duration: 300ms;
+
+        &:hover {
+          background-color: $light-purple;
+          color: $dark-purple;
+          border: 1px solid $dark-purple;
+        }
+      }
+    }
+    .error-msg {
+      width: 80%;
+      color: rgb(196, 70, 70);
+    }
+    .forgot-password {
+      font-size: .9rem;
+      text-decoration: underline;
+      cursor: pointer;
+
+      &:hover {
+        opacity: .7;
+      }
+    }
+  }
+
+}

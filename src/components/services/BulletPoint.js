@@ -1,10 +1,10 @@
-import {EditContext} from "../cms/CMS";
+import {CMSContext} from "../cms/CMS";
 import {useContext, useState, useEffect} from "react";
 
 
 function BulletPoint(props) {
 
-  const context = useContext(EditContext);
+  const context = useContext(CMSContext);
   const [editState, setEditState] = useState(false)
   const [elementState, setElementState] = useState(undefined);
 

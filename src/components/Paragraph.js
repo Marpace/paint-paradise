@@ -1,10 +1,10 @@
-import {EditContext} from "./cms/CMS"
+import {CMSContext} from "./cms/CMS"
 import {useContext, useEffect, useState} from "react";
 
 
 function Paragraph(props) {
 
-  const context = useContext(EditContext);
+  const context = useContext(CMSContext);
   const [elementState, setElementState] = useState();
   const [editState, setEditState] = useState(false);
 

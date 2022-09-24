@@ -3,7 +3,7 @@ import SectionHeader from "../../SectionHeader";
 import SitePath from "../SitePath";
 import { UrlContext } from "../../App";
 import {useContext, useEffect, useState} from "react";
-import {EditContext} from "../../cms/CMS";
+import {CMSContext} from "../../cms/CMS";
 import Paragraph from "../../Paragraph";
 import LoadingScreen from "../../LoadingScreen";
 
@@ -12,7 +12,7 @@ import LoadingScreen from "../../LoadingScreen";
 function PaintNight() {
 
   const urlContext = useContext(UrlContext);
-  const context = useContext(EditContext);
+  const context = useContext(CMSContext);
 
 
   const [heading, setHeading] = useState({});

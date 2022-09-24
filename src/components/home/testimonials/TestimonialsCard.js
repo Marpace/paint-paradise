@@ -1,10 +1,10 @@
-import {EditContext} from "../../cms/CMS"
+import {CMSContext} from "../../cms/CMS"
 import {useContext} from "react";
 import Paragraph from "../../Paragraph";
 
 function TestimonialsCard(props) {
 
-  const context = useContext(EditContext)
+  const context = useContext(CMSContext)
 
   return (
     <div className={`testimonial-card test-${props.position} ${context.editingModeOn ? "testimonial-card-editable" : ""}`}>

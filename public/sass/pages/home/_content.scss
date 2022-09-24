@@ -34,10 +34,25 @@
             width: 60px;
             background-color: grey;
             border-radius: 50%;
-        
-            &-img {
-                width: 100%;
+            position: relative;
+    
+            &:hover > .edit-icon {
+                display: block;
             }
+            .edit-icon {
+                display: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 5px;
+                background-color: white;
+                border-radius: 8px;
+                cursor: pointer;
+
+                &__icon {
+                    width: 20px;
+                }
+              }
         }
         &__title {
             font-size: 1.2rem;

@@ -1,7 +1,7 @@
 import CarouselControls from "../../CarouselControls";
 import SectionHeader from "../../SectionHeader";
 import TestimonialsCard from "./TestimonialsCard";
-import {EditContext} from "../../cms/CMS"
+import {CMSContext} from "../../cms/CMS"
 import { homeTextContext } from "../Home";
 // import { UrlContext } from "../../App";
 import {useState, useContext, useEffect} from "react";
@@ -12,7 +12,7 @@ function TestimonialsCarousel() {
   const [headingText, setHeadingText] = useState({});
   const [texts, setTexts] = useState([]);
   const [authors, setAuthors] = useState([]);
-  const context = useContext(EditContext)
+  const context = useContext(CMSContext)
   // const urlContext = useContext(UrlContext)
   const homeContext = useContext(homeTextContext);
 

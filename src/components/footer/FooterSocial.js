@@ -1,11 +1,11 @@
-import {EditContext} from "../cms/CMS";
+import {CMSContext} from "../cms/CMS";
 import {useState, useContext, useEffect} from "react";
 
 
 
 function FooterSocial(props) {
   
-  const context = useContext(EditContext);
+  const context = useContext(CMSContext);
   const [editState, setEditState] = useState(false);
   const [titleElement, setTitleElement] = useState(undefined);
 

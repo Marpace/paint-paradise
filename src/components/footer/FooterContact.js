@@ -1,10 +1,10 @@
-import {EditContext} from "../cms/CMS";
+import {CMSContext} from "../cms/CMS";
 import {useState, useContext, useEffect} from "react";
 
 
 function FooterContact(props) {
 
-  const context = useContext(EditContext)
+  const context = useContext(CMSContext)
 
   const [editTitleState, setEditTitleState] = useState(false)
   const [editPhoneState, setEditPhoneState] = useState(false)

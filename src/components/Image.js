@@ -1,4 +1,4 @@
-import {EditContext} from "./cms/CMS";
+import {CMSContext} from "./cms/CMS";
 import {useContext, useState} from "react";
 import {useLocation} from "react-router-dom";
 
@@ -6,7 +6,7 @@ function Image(props) {
 
   const [imageSelected, setImageSelected] = useState(false);
 
-  const context = useContext(EditContext);
+  const context = useContext(CMSContext);
   const location = useLocation().pathname
 
 

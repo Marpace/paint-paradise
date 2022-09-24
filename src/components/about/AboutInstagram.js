@@ -4,7 +4,7 @@ import ImageModal from "../ImageModal";
 import Paragraph from "../Paragraph";
 import Image from "../Image";
 import {useState, useContext} from "react";
-import { EditContext } from "../cms/CMS";
+import { CMSContext } from "../cms/CMS";
 
 function AboutInstagram(props) {
 
@@ -12,7 +12,7 @@ function AboutInstagram(props) {
   const [imgUrl, setImgUrl] = useState("");
   const [imgPositions, setImgPositions] = useState(["left", "middle", "right"])
   const [position, setPosition] = useState(3)
-  const context = useContext(EditContext)
+  const context = useContext(CMSContext)
   const images = [
     [props.images[0], props.images[1], props.images[2]],
     [props.images[3], props.images[4], props.images[5]],

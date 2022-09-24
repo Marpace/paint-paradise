@@ -5,7 +5,7 @@ import {homeTextContext} from "../Home";
 
 
 
-function Content() {
+function Content(props) {
 
   const [headingText, setHeadingText] = useState({});
   const [contentBlocks, setContentBlocks] = useState([]);
@@ -21,21 +21,21 @@ function Content() {
       const texts = sortContent(homeContext, "text", "content")
       const blockContent = [
         {
-          imageSrc: "",
+          image: props.images[0],
           title: titles[0].content,
           text: texts[0].content,
           titleId: titles[0]._id,
           textId: texts[0]._id
         },
         {
-          imageSrc: "",
+          image: props.images[1],
           title: titles[1].content,
           text: texts[1].content,
           titleId: titles[1]._id,
           textId: texts[1]._id
         },
         {
-          imageSrc: "",
+          image: props.images[2],
           title: titles[2].content,
           text: texts[2].content,
           titleId: titles[2]._id,
@@ -65,7 +65,7 @@ function Content() {
           key={block.titleId}
           titleContentId={block.titleId}
           textContentId={block.textId}
-          imageSrc={block.imageSrc}
+          image={block.image}
           title={block.title}
           text={block.text}
         />

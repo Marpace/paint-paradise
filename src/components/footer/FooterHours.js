@@ -1,11 +1,11 @@
-import {EditContext} from "../cms/CMS";
+import {CMSContext} from "../cms/CMS";
 import {useState, useContext, useEffect} from "react";
 
 
 
 function FooterHours(props) {
 
-  const context = useContext(EditContext)
+  const context = useContext(CMSContext)
   const [editTitleState, setEditTitleState] = useState(false)
   const [editWeekendState, setEditWeekendState] = useState(false)
   const [editWeekdayState, setEditWeekdayState] = useState(false)

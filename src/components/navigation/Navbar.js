@@ -3,14 +3,12 @@ import NavbarLink from "./NavbarLink"
 import NavbarToggler from "./NavbarToggler";
 import {UrlContext} from "../App";
 import {useEffect, useState, useContext} from "react";
-import {EditContext} from "../cms/CMS";
 
 function Navbar() {
 
   
   const [menuShown, setMenuShown] = useState(false);
   const menuClass = menuShown ? "menu-shown" : "";
-  const context = useContext(EditContext);
   const urlContext = useContext(UrlContext);
   const [links, setLinks] = useState([]);
   const [dropdownLinks, setDropdownLinks] = useState([]);

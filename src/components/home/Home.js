@@ -18,6 +18,7 @@ function Home() {
   const [bookNowTitle, setBookNowTitle] = useState({});
   const [bookNowButton, setBookNowButton] = useState({});
   const [carouselImages, setCarouselImages] = useState([]);
+  const [contentImages, setContentImages] = useState([]);
   const [contentLoaded, setContentLoaded] = useState(false);
 
   useEffect(() => {
@@ -39,7 +40,8 @@ function Home() {
     })
     .then( res => res.json())
     .then( data => {
-      setCarouselImages(data.content.sort((a, b) => a.order - b.order))
+      setCarouselImages(sortContent(data.content, "services"))
+      setContentImages(sortContent(data.content, "content"))
       setHomeContent( prev => {
         return [...prev, ...data.content]
       })
@@ -49,12 +51,19 @@ function Home() {
     .catch( err => console.log(err))
   }
 
+  function sortContent(arr, section){
+    const sortedArray = arr.filter( e => e.location.section === section).sort((a,b) => a.order - b.order);
+    return sortedArray;
+  }
+
   if(contentLoaded) {
     return (
       <homeTextContext.Provider value={homeContent}>
         <div className="home">
           <Hero />
-          <Content />
+          <Content 
+            images={contentImages}
+          />
           <ServicesCarousel 
             carouselImages={carouselImages}  
           />
@@ -75,3 +84,4 @@ function Home() {
 }
 
 export default Home;
+

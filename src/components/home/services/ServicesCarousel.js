@@ -2,7 +2,7 @@ import CarouselControls from "../../CarouselControls";
 import SectionHeader from "../../SectionHeader";
 import ServicesCard from "./ServicesCard";
 import {useContext, useEffect, useState} from "react";
-import {EditContext} from "../../cms/CMS"
+import {CMSContext} from "../../cms/CMS"
 import {homeTextContext} from "../Home";
 
 
@@ -21,7 +21,7 @@ function ServicesCarousel(props) {
   ])
 
   //CMS
-  const context = useContext(EditContext)
+  const context = useContext(CMSContext)
   const [selectedImg, setSelectedImg] = useState();
 
   const [cardPositions, setCardPositions] = useState(["left", "middle", "right"]);
