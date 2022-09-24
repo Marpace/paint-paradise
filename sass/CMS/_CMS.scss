@@ -30,7 +30,7 @@
         flex-wrap: wrap;
         gap: 20px;
 
-        .cms-link {
+        .cms-link, .logout-btn {
           width: 170px;
           padding: 3px 7px;
           border: 2px solid white;
@@ -43,6 +43,16 @@
           &:hover {
             background-color: white;
             color: black;
+          }
+        }
+        .logout-btn {
+          background-color: orange;
+          color: $dark-purple;
+          border: none;
+
+          &:hover {
+            background-color: $dark-purple;
+            color: orange;
           }
         }
       }
@@ -126,7 +136,9 @@
         }
       }
       .gallery-options {
+        height: 150px;
         display: flex;
+        flex-direction: column;
         flex-wrap: wrap;
         width: 45%;
         gap: 10px;
