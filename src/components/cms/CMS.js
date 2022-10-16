@@ -18,7 +18,7 @@ const contextObject = {
     loggedIn: false
   },
   // baseUrl: "http://localhost:8080"
-  baseUrl: "https://paint-paradise.herokuapp.com"
+  baseUrl: "https://attractive-earrings-worm.cyclic.app"
 }
 
 export const CMSContext = React.createContext(contextObject)

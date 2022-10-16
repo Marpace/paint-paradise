@@ -6,7 +6,7 @@ import Modal from "../Modal"
 function CMSInterface(props) {
 
   // const baseUrl = "http://localhost:8080"
-  const baseUrl = "https://paint-paradise.herokuapp.com"
+  const baseUrl = "https://attractive-earrings-worm.cyclic.app"
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showFailMessage, setShowFailMessage] = useState(false);
   const [successMessage, setSuccessMessage] = useState("Content updated successfully!");
@@ -61,13 +61,11 @@ function CMSInterface(props) {
   
   function handleSubmitImage(e) {
     e.preventDefault()  
-    const currentLocation = window.location.href.split("/").at(-1).toLowerCase();
-    const page = currentLocation === "admin" ? "home" : currentLocation
-    console.log(e.target.firstChild.files[0])
+ 
     const formData = new FormData();
     formData.append("image", e.target.firstChild.files[0])
     formData.append("contentId", props.contentId)
-    fetch(`${baseUrl}/upload-${page}-image`, {
+    fetch(`${baseUrl}/upload-image`, {
       method: "POST",
       body: formData
     })

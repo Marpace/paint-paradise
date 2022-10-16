@@ -6,7 +6,7 @@ import React from "react"
 
 const baseUrl = {
   // baseUrl: "http://localhost:8080"
-  baseUrl: "https://paint-paradise.herokuapp.com"
+  baseUrl: "https://attractive-earrings-worm.cyclic.app"
 }
 export const UrlContext = React.createContext(baseUrl);
 
