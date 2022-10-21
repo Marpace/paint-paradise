@@ -2185,6 +2185,13 @@ p {
   text-align: center;
   font-size: 1rem;
 }
+.login__body .login-form .reset-code-input::-webkit-outer-spin-button, .login__body .login-form .reset-code-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.login__body .login-form .reset-code-input input[type=number] {
+  -moz-appearance: textfield;
+}
 .login__body .login-form__button {
   margin-top: 20px;
   padding: 10px;
@@ -2204,6 +2211,9 @@ p {
 .login__body .error-msg {
   width: 80%;
   color: rgb(196, 70, 70);
+}
+.login__body .success-msg {
+  color: rgb(95, 196, 70);
 }
 .login__body .forgot-password {
   font-size: 0.9rem;

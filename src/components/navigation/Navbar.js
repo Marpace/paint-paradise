@@ -61,6 +61,7 @@ function Navbar() {
             contentId={link._id}
             linkName={link.content}
             dropdown={link.type.options}
+            order={link.order}
             dropdownLinks={dropdownLinks}
             toggleMenu={toggleMenu}
           />

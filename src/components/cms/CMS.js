@@ -62,7 +62,7 @@ function CMS() {
           selectedImage: id
         }
       })
-      console.log(id)
+      console.log()
     },
     pushId: (id) => {
       setSelectedImages( prev => {

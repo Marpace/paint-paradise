@@ -6,12 +6,17 @@ import DropdownLink from "./DropdownLink"
 
 function NavbarLink(props) {
 
-    const path = props.linkName === "Home" ? "" : props.linkName
+    // const path = props.linkName === "Home" ? "" : props.linkName
+    
+
+
+
     const context = useContext(CMSContext)
     const location = useLocation().pathname.split("/")[1];
     const [editState, setEditState] = useState(false)
     const [elementState, setElementState] = useState(undefined);
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [path, setPath] = useState("")
     // const items = [
     //     {
     //         linkName: props.dropdownLinks[0].content,
@@ -31,6 +36,24 @@ function NavbarLink(props) {
     //   ]
 
     let activeLink = location === "" ? "Home" : location
+
+    useEffect(() => {
+        setPath( () => {
+            switch (props.order) {
+                case 1:
+                    return ""
+                case 2:
+                    return "Services"
+                case 3:
+                    return "About"
+                case 4:
+                    return "Gallery"
+                default:
+                    break;
+            }
+        }) 
+        console.log(path)
+    }, [])
 
 
       useEffect(() => {
