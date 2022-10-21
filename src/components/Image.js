@@ -25,8 +25,6 @@ function Image(props) {
     }
   }
 
-  console.log(context.selectedImage)
-
   return(
     <div onClick={handleClick} className={props.className + ` ${imageSelected && context.chooseImages ? "selected-image" : ""}`} >
       <img id={props.image.googleId} className={`editable-image ${context.chooseImages ? "selectable-image" : ""}`} src={
@@ -35,7 +33,7 @@ function Image(props) {
         : props.image.path
       }></img>
       <div id={props.image._id} onClick={editImage} className={`edit-icon ${context.chooseImages ? "hidden" : ""}`}>
-        <img id={props.image._id} className="edit-icon__icon" src="/images/cms/edit_icon.png"></img>
+        <img id={props.image._id} className="edit-icon__icon" src="./images/cms/edit_icon.png"></img>
       </div>
     </div>
   )

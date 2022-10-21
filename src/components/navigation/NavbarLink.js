@@ -52,7 +52,6 @@ function NavbarLink(props) {
                     break;
             }
         }) 
-        console.log(path)
     }, [])
 
 
