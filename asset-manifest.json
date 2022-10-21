@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/paint-paradise/static/js/main.de1f967a.js",
+    "main.js": "/paint-paradise/static/js/main.d001e07e.js",
     "index.html": "/paint-paradise/index.html",
-    "main.de1f967a.js.map": "/paint-paradise/static/js/main.de1f967a.js.map"
+    "main.d001e07e.js.map": "/paint-paradise/static/js/main.d001e07e.js.map"
   },
   "entrypoints": [
-    "static/js/main.de1f967a.js"
+    "static/js/main.d001e07e.js"
   ]
 }
