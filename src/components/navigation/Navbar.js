@@ -12,6 +12,7 @@ function Navbar() {
   const urlContext = useContext(UrlContext);
   const [links, setLinks] = useState([]);
   const [dropdownLinks, setDropdownLinks] = useState([]);
+  const [contentLoaded, setContentLoaded] = useState(false);
 
   useEffect(() => {
     getLinks();
@@ -29,6 +30,7 @@ function Navbar() {
         })
         setLinks(links.sort((a, b) => a.order - b.order))
         setDropdownLinks(dropdownLinks.sort((a, b) => a.order - b.order))
+        setContentLoaded(true);
     })
     .catch( err => {
       console.log(err)
@@ -44,31 +46,33 @@ function Navbar() {
       }
   }
 
-  return (
-    <div className="nav-wrap">
-      <div className="navbar">
-      <NavbarBrand 
-      />
-      <NavbarToggler 
-        menuShown={menuShown}
-        toggleMenu={toggleMenu}
-      />
+  if(contentLoaded) {
+    return (
+      <div className="nav-wrap">
+        <div className="navbar">
+        <NavbarBrand 
+        />
+        <NavbarToggler 
+          menuShown={menuShown}
+          toggleMenu={toggleMenu}
+        />
+        </div>
+        <div className={`nav-links-container ${menuClass}`}>
+          {links.map(link => (
+            <NavbarLink 
+              key={link._id}
+              contentId={link._id}
+              linkName={link.content}
+              dropdown={link.type.options}
+              order={link.order}
+              dropdownLinks={dropdownLinks}
+              toggleMenu={toggleMenu}
+            />
+          ))}
+        </div>
       </div>
-      <div className={`nav-links-container ${menuClass}`}>
-        {links.map(link => (
-          <NavbarLink 
-            key={link._id}
-            contentId={link._id}
-            linkName={link.content}
-            dropdown={link.type.options}
-            order={link.order}
-            dropdownLinks={dropdownLinks}
-            toggleMenu={toggleMenu}
-          />
-        ))}
-      </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default Navbar;

@@ -45,7 +45,7 @@ function Home() {
       setHomeContent( prev => {
         return [...prev, ...data.content]
       })
-      // setContentLoaded(true);
+      setContentLoaded(true);
       
     })
     .catch( err => console.log(err))
