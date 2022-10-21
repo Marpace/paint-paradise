@@ -2,41 +2,65 @@
   @include flex_centered(row);
   height: 100vh;
 
-  .spinner {
+  &__icon {
     position: relative;
-    height: 70px;
-    width: 70px;
-    border-radius: 50%;
-    // border-top: 15px solid $dark-purple;
-    animation-name: spin;
-    animation-duration: 1000ms;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    background-color: $dark-purple;
-    @include flex_centered(row);
-
-    &::before {
-      content: "";
+    
+    .palette-icon {
+      rotate: 20deg;
+    }
+    .paint-circle {
       position: absolute;
-      height: 30px;
-      width: 40px;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: white;
-    }
-
-    .spinner-inner {
-      height: 60px;
-      width: 60px;
+      height: 20px;
+      width: 20px;
       border-radius: 50%;
-      background-color: white;
+      animation-duration: 3500ms;
+      animation-iteration-count: infinite;
+
+      &:nth-of-type(1) {
+        background-color: rgb(231, 125, 125);
+        top: 52px;
+        left: 14px;
+        animation-name: circle-1;
+      }
+      &:nth-of-type(2) {
+        background-color: rgb(142, 218, 80);
+        top: 21px;
+        left: 30px;
+        animation-name: circle-2;
+      }
+      &:nth-of-type(3) {
+        background-color: rgb(125, 167, 231);
+        top: 17px;
+        left: 66px;
+        animation-name: circle-3;
+      }
+      &:nth-of-type(4) {
+        background-color: rgb(166, 125, 231);
+        top: 41px;
+        left: 90px;
+        animation-name: circle-4;
+      }
+    }
+    @keyframes circle-1 {
+      0% {opacity: 0}
+      15% {opacity: 0}
+      16% {opacity: 1}
+    }
+    @keyframes circle-2 {
+      0% {opacity: 0}
+      35% {opacity: 0}
+      36% {opacity: 1}
+    }
+    @keyframes circle-3 {
+      0% {opacity: 0}
+      55% {opacity: 0}
+      56% {opacity: 1}
+    }
+    @keyframes circle-4 {
+      0% {opacity: 0}
+      75% {opacity: 0}
+      76% {opacity: 1}
     }
   }
 
-
-  @keyframes spin {
-    0% {transform: rotate(0deg)}
-    100% {transform: rotate(360deg)}
-  }
 }
