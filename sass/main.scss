@@ -1,0 +1,32 @@
+@import "base/mixins";
+@import "base/variables";
+@import "base/reset";
+@import "base/typography";
+
+@import "components/buttons";
+@import "components/carousel-controls";
+@import "components/loading-screen";
+
+@import "layout/navigation";
+@import "layout/footer";
+
+@import "pages/home/hero";
+@import "pages/home/content";
+@import "pages/home/services-carousel";
+@import "pages/home/testimonials-carousel";
+@import "pages/home/book-now";
+
+@import "pages/services/services-section";
+@import "pages/services/private-parties-page";
+@import "pages/services/paint-night-page";
+@import "pages/services/paint-kits-page";
+
+@import "pages/about/header";
+@import "pages/about/instagram";
+
+@import "pages/gallery/gallery";
+@import "pages/gallery/gallery-modal";
+
+
+@import "CMS/CMS";
+@import "CMS/CMS-login";

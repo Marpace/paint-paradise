@@ -1,0 +1,69 @@
+.hero {
+    height: 100vh;
+    padding-top: 100px;
+    background-image: url("../images/home/hero_background.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 60%;
+    @include responsive($tablet_large){
+        padding-top: 150px;
+        height: 70vh;
+    }
+    @include responsive($desktop) {
+        height: 100vh;
+        background-size: 100% 65%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        padding: 150px 15%;
+    }
+    @include responsive($desktop_large){
+        padding: 150px 20%;
+    }
+    
+    &__1 {
+        @include flex_centered(column);
+        justify-content: flex-start;
+        gap: 40px;
+        @include responsive($tablet_large){
+            gap: 60px;
+        }
+        @include responsive($desktop){
+            align-items: flex-start;
+        }
+
+        .heading-title {
+            max-width: 400px;
+            @include responsive($tablet){
+                max-width: 500px;
+            }
+        }
+        &-text {
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            @include responsive($desktop) {
+                text-align: left;
+                max-width: 475px;
+            }
+        }
+    }
+    &__2 {
+        display: none;
+        @include responsive($desktop) {
+            display: flex;
+            justify-content: flex-end;
+            transform: translateY(-100px);
+            height: fit-content;
+        }
+
+        &-img-1 {
+            width: 75%;
+            object-fit: cover;
+        }
+        &-img-2 {
+            object-fit: contain;
+            width: 22%;
+            transform: translateY(20px);
+        }
+    }
+}
