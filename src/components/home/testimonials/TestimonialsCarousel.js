@@ -30,7 +30,7 @@ function TestimonialsCarousel() {
     const content = arr.filter( e => {
       return e.type.name === typeName && e.location.section === section;
     })
-    return content;
+    return content.sort((a, b) => a.order - b.order);
   }
 
   function rotateCardsLeft() {
