@@ -28,7 +28,7 @@ function Image(props) {
   return(
     <div onClick={handleClick} className={props.className + ` ${imageSelected && context.chooseImages ? "selected-image" : ""}`} >
       <img id={props.image.googleId} className={`editable-image ${context.chooseImages ? "selectable-image" : ""}`} src={
-        context.selectedImage === props.image._id || context.previewImgUrl !== undefined
+        context.selectedImage === props.image._id && context.previewImgUrl !== undefined
         ? context.previewImgUrl 
         : props.image.path
       }></img>

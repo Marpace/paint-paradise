@@ -34,24 +34,24 @@ function ServicesIndex() {
           title={titles[0]}
           tilt="left"
           description={texts[0]}
-          button={buttons[1]}
+          button={buttons[0]}
           image={images[0]}
           path="private-paint-parties"
         />
-        <ServicesSection 
+        {/* <ServicesSection 
           title={titles[1]}
           tilt="right"
           description={texts[1]}
           button={buttons[3]}
           image={images[1]}
           path="paint-night"
-        />
+        /> */}
         <ServicesSection 
-          title={titles[2]}
+          title={titles[1]}
           tilt="left"
-          description={texts[2]}
-          button={buttons[5]}
-          image={images[2]}
+          description={texts[1]}
+          button={buttons[1]}
+          image={images[1]}
           path="paint-kits"
         />
       </div>

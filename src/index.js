@@ -12,12 +12,10 @@ import About from './components/about/About';
 import Gallery from './components/gallery/Gallery';
 import Services from "./components/services/Services";
 import PrivateParties from './components/services/private-parties/privateParties';
-import PaintNight from './components/services/paint-night/PaintNight';
 import CMS from './components/cms/CMS';
 import ServicesIndex from './components/services/ServicesIndex';
 import PaintKits from './components/services/paint-kits/PaintKits';
 import Home from './components/home/Home';
-import CMSLogin from './components/cms/CMSLogin';
 import ProtectedRoutes from './components/cms/ProtectedRoutes';
 
 
@@ -32,7 +30,6 @@ root.render(
         <Route path="Services" element={<Services />}>
           <Route index element={<ServicesIndex />} />
           <Route path="private-paint-parties" element={<PrivateParties/>}/>
-          <Route path="paint-night" element={<PaintNight/>}/>
           <Route path="paint-kits" element={<PaintKits/>}/>
         </Route>
         <Route path="Gallery" element={<Gallery />} />
@@ -47,7 +44,6 @@ root.render(
           <Route path="Services" element={<Services />}>
             <Route index element={<ServicesIndex />} />
             <Route path="private-paint-parties" element={<PrivateParties/>}/>
-            <Route path="paint-night" element={<PaintNight/>}/>
             <Route path="paint-kits" element={<PaintKits/>}/>
           </Route>
           <Route path="Gallery" element={<Gallery />} />

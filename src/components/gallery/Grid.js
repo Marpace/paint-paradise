@@ -14,7 +14,7 @@ function Grid(props) {
 
     useEffect(()=> {
         setImageArrays();
-    }, [])
+    }, [props.images])
 
     function setImageArrays(){
         let arr1 = [];

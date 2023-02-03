@@ -136,6 +136,10 @@
             @include responsive($tablet_large){
                 flex-wrap: nowrap;
                 gap: 10px;
+
+                &:hover > div {
+                    height: 240px;
+                }
             }
 
             .drop-down-arrow {
@@ -176,7 +180,8 @@
                     @include flex_centered(column);
                     align-items: flex-start;
                     justify-content: flex-end;
-                    background-color: white;
+                    // background-color: white;
+                    background-image: linear-gradient(to top, white, white 95%, rgba(0, 0, 0, 0) 95%);
                     box-shadow: 4px 13px 12px -10px rgb(0 0 0 / 22%);
                 }
                 .drop-down-link {                
@@ -250,7 +255,7 @@
             .drop-down-open {
                 height: 145px;
                 @include responsive($tablet_large){
-                    height: 300px;
+                    height: 240px;
                 }
             }
             .cms-dropdown {

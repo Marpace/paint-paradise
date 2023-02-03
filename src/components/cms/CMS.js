@@ -37,6 +37,7 @@ function CMS() {
   const [selectedImages, setSelectedImages] = useState([]);
   const [editDropdown, setEditDropdown] = useState(false);
   const [contentId, setContentId] = useState();
+  const [gallerySection, setGallerySection] = useState(undefined);
   const [context, setContext] = useState({
     ...contextObject,
     editContent: (text, el, id) => {
@@ -72,8 +73,8 @@ function CMS() {
           return [...prev, id]
         }
       })
-
-    }
+    }, 
+    setGallerySection: (section) => setGallerySection(section)
   })
 
   useEffect(() => {
@@ -181,6 +182,7 @@ function CMS() {
             showEditImageForm={showEditImageForm}
             contentId={contentId}
             selectedImages={selectedImages}
+            gallerySection={gallerySection}
             getTextValue={getTextValue}
             setEditDropdown={setDropdownEditState}
             setShowEditForm={setShowEditForm}
@@ -188,6 +190,7 @@ function CMS() {
             setTextValue={setTextValue}
             setContext={setContext}
             userLogout={userLogout}
+            setGallerySection={setGallerySection}
           />
           <div className="editable-area">
               <Navbar 

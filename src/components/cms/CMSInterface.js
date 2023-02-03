@@ -13,10 +13,10 @@ function CMSInterface(props) {
   const [failMessage, setFailMessage] = useState("Could no update content!");
   const [filesChosen, setFilesChosen] = useState([]);
   const [previewImgUrl, setPreviewImgUrl] = useState(undefined);
-  const [singleFileInputValue, setSingleFileInputValue] = useState("")
-  const [multipleFileInputValue, setMultipleFileInputValue] = useState("")
   const [gallery, setGallery] = useState();
   const [chooseImages, setChooseImages] = useState(false);
+  const [createSection, setCreateSection] = useState(false);
+  const [createdSectionName, setCreatedSectionName] = useState("");
   const [showModal, setShowModal] = useState(false);
   const location = useLocation();
 
@@ -29,6 +29,7 @@ function CMSInterface(props) {
   }, [location, props.showEditImageForm, props.showEditForm])
 
   useEffect(() => {
+    console.log(previewImgUrl)
     props.setContext( prev => {
       return {
         ...prev,
@@ -37,6 +38,10 @@ function CMSInterface(props) {
     })
     return () => URL.revokeObjectURL(previewImgUrl);
   }, [previewImgUrl])
+
+  useEffect(() => {
+    if(props.gallerySection !== undefined) setCreateSection(false);
+  }, [props.gallerySection])
   
   function handleChange(e) {
     props.getTextValue(e.target.value);
@@ -46,22 +51,29 @@ function CMSInterface(props) {
     props.setEditDropdown();
   }
 
+  function handleCreateSectionInputChange(e) {
+    setCreatedSectionName(e.target.value)
+  }
+
+  function handleCreateSectionButton() {
+    setCreateSection(true);
+  }
+
   function handleSingleFileInputChange(e) {
-    if(e.target.value === "") return
-    setFilesChosen(e.target.files)
+    console.log(previewImgUrl)
+    if(e.target.value === "") return 
+    setFilesChosen([...e.target.files])
     setPreviewImgUrl(URL.createObjectURL(e.target.files[0]))
-    setSingleFileInputValue(e.target.value)
   }
 
   function handleMultipleFileInputChange(e) {
     if(e.target.value === "") return
-    setFilesChosen(e.target.files)
-    setMultipleFileInputValue(e.target.value)
+    setFilesChosen([...e.target.files])
+    // setMultipleFileInputValue(e.target.value)
   }
   
   function handleSubmitImage(e) {
     e.preventDefault()  
- 
     const formData = new FormData();
     formData.append("image", e.target.firstChild.files[0])
     formData.append("contentId", props.contentId)
@@ -75,22 +87,20 @@ function CMSInterface(props) {
         alert("Image updated");
         window.location.reload();
         props.setShowEditImageForm(false)
-        setSingleFileInputValue("")
       }
     })
     .catch( err => console.log(err))
-
-    
   }
   
   //uploads images to the gallery page
   function handleGalleryUpload(e) {
     e.preventDefault();
-    const files = e.target.firstChild.files
+    const files = filesChosen
     const formData = new FormData();
+    const sectionName = createSection ? createdSectionName : props.gallerySection
   
     for(let i = 0; i < files.length; i++) {
-      formData.append("image", files[i])
+      formData.append("image", files[i], sectionName)
     }
     fetch(`${baseUrl}/upload-gallery-images`, {
       method: "POST",
@@ -99,7 +109,6 @@ function CMSInterface(props) {
     .then( res => {
       if(res.status === 200) {
         alert("Images uploaded successfully!")
-        setMultipleFileInputValue("");
         window.location.reload();
       }
     })
@@ -141,6 +150,8 @@ function CMSInterface(props) {
     setFilesChosen([]);
     props.setShowEditImageForm(false);
     setChooseImages(false)
+    setCreateSection(false);
+    props.setGallerySection(undefined)
     props.setContext( prev => {
       return {
         ...prev,
@@ -231,8 +242,7 @@ function CMSInterface(props) {
             onChange={handleSingleFileInputChange} 
             className="image-upload-form__input" 
             id="image-upload" 
-            type="file" 
-            value={singleFileInputValue}>
+            type="file">
           </input>
           <label className="image-upload-form__label" htmlFor="image-upload">
             <img src="./images/cms/plus_icon.png"></img>Add photo</label>
@@ -244,18 +254,52 @@ function CMSInterface(props) {
         </form>
 
         <div className={`gallery-options ${gallery ? "show-flex" : "hidden"}`}>
+          <p className={`gallery-options__message ${createSection ? "hidden" : ""}`}>
+            {!props.gallerySection ? `Choose section or` : `${props.gallerySection}`}
+          </p>
+          <button onClick={handleCreateSectionButton} className={`${createSection || props.gallerySection ? "hidden" : ""} create-section-btn`}>Create new section</button>
           <form 
-            onSubmit={handleGalleryUpload} 
-            className={`gallery-upload-form ${chooseImages ? "hidden" : ""}`}
+            onSubmit={handleGalleryUpload}
+            className={`gallery-upload-form ${createSection ? "" : "hidden"} ${filesChosen.length > 0 ? "files-selected-form" : ""}`}
             encType="multipart/form-data">
+            <input
+              type="text"
+              onChange={handleCreateSectionInputChange}
+              className={createSection ? "" : "hidden"}
+              placeholder="Section name"
+              value={createdSectionName}></input>
             <input 
             onChange={handleMultipleFileInputChange} 
             className="gallery-upload-form__input" 
             id="gallery-image-upload" 
-            type="file" 
-            value={multipleFileInputValue}
+            type="file"
             multiple></input>
-            <label className="gallery-upload-form__label" htmlFor="gallery-image-upload"><img src="./images/cms/plus_icon.png"></img>Add photos</label>
+            <label className="gallery-upload-form__label" htmlFor="gallery-image-upload">
+              <img src="./images/cms/plus_icon.png"></img>Add photos
+            </label>
+            <button className={`gallery-upload-form__btn ${filesChosen.length > 0 ? "show" : "hidden"}`}>Upload</button>
+            <div className="files-chosen">
+              <p>{filesChosen.length > 0 ? `${filesChosen.length} images selected` : ""}</p>
+            </div>
+          </form>  
+          <button 
+            onClick={handleCancelImageUpload} 
+            className={`image-upload-form__btn ${props.gallerySection || createSection || chooseImages ? "show" : "hidden"}`}>
+            Cancel
+          </button>
+          <form 
+            onSubmit={handleGalleryUpload} 
+            className={`gallery-upload-form ${chooseImages || !props.gallerySection ? "hidden" : ""} ${filesChosen.length > 0 ? "files-selected-form" : ""}`}
+            encType="multipart/form-data">
+            <input 
+              onChange={handleMultipleFileInputChange} 
+              className="gallery-upload-form__input" 
+              id="gallery-image-upload" 
+              type="file" 
+              multiple></input>
+            <label className="gallery-upload-form__label" htmlFor="gallery-image-upload">
+              <img src="./images/cms/plus_icon.png"></img>Add photos
+            </label>
             <button className={`gallery-upload-form__btn ${filesChosen.length > 0 ? "show" : "hidden"}`}>Upload</button>
             <div className="files-chosen">
               <p>{filesChosen.length > 0 ? `${filesChosen.length} images selected` : ""}</p>
@@ -263,7 +307,7 @@ function CMSInterface(props) {
           </form>
           <button 
             onClick={handleRemoveImages} 
-            className={`remove-photos-btn ${filesChosen.length > 0 || chooseImages ? "hidden" : "show-flex"}`}>
+            className={`remove-photos-btn ${filesChosen.length > 0 || chooseImages || !props.gallerySection ? "hidden" : "show-flex"}`}>
             <img src="./images/cms/trash_icon.png"></img>
             Remove photos
           </button>
@@ -286,11 +330,7 @@ function CMSInterface(props) {
               delete={deleteImages}
             />
           </div>
-          <button 
-            onClick={handleCancelImageUpload} 
-            className={`image-upload-form__btn ${filesChosen.length > 0 || chooseImages ? "show" : "hidden"}`}>
-            Cancel
-          </button>
+          
         </div>
 
       </div>

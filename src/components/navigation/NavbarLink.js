@@ -88,8 +88,8 @@ function NavbarLink(props) {
         return (
             <div 
                 onClick={editContent}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
+                // onMouseEnter={handleMouseEnter}
+                // onMouseLeave={handleMouseLeave}
                 className={`nav-link nav-link-drop-down ${context.editingModeOn ? "editable" : ""}`}>
                 <Link 
                     onClick={props.toggleMenu}
