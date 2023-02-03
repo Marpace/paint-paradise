@@ -1816,23 +1816,32 @@ p {
   }
 }
 @media only screen and (min-width: 1200px) {
-  .gallery__option-images:hover > .option-image:nth-child(1) {
+  .gallery__option-images:hover > .option-image:nth-child(5) {
+    rotate: 10deg;
+    top: 5px;
     left: 360px;
   }
-  .gallery__option-images:hover > .option-image:nth-child(2) {
+  .gallery__option-images:hover > .option-image:nth-child(4) {
+    rotate: -10deg;
+    top: -5px;
     left: 270px;
   }
   .gallery__option-images:hover > .option-image:nth-child(3) {
+    rotate: 10deg;
+    top: 5px;
     left: 180px;
   }
-  .gallery__option-images:hover > .option-image:nth-child(4) {
+  .gallery__option-images:hover > .option-image:nth-child(2) {
+    rotate: -10deg;
+    top: -5px;
     left: 90px;
   }
-  .gallery__option-images:hover > .option-image:nth-child(5) {
+  .gallery__option-images:hover > .option-image:nth-child(1) {
     left: 0px;
   }
 }
 .gallery__option-images .option-image {
+  top: 0px;
   position: absolute;
   width: 100px;
   height: 100px;
@@ -1842,8 +1851,7 @@ p {
   overflow: hidden;
   border: 2px solid #1D1330;
   box-shadow: 3px 10px 10px -10px #2f2e2e;
-  transition-duration: 500ms;
-  transition-property: left;
+  transition: 500ms;
   cursor: pointer;
 }
 @media only screen and (min-width: 768px) {
@@ -1858,23 +1866,26 @@ p {
   height: 100%;
   object-fit: cover;
 }
-.gallery__option-images .option-image:nth-child(1) {
+.gallery__option-images .option-image:nth-child(5) {
+  z-index: 60;
   left: 160px;
 }
 @media only screen and (min-width: 768px) {
-  .gallery__option-images .option-image:nth-child(1) {
+  .gallery__option-images .option-image:nth-child(5) {
     left: 280px;
   }
 }
-.gallery__option-images .option-image:nth-child(2) {
+.gallery__option-images .option-image:nth-child(4) {
+  z-index: 70;
   left: 120px;
 }
 @media only screen and (min-width: 768px) {
-  .gallery__option-images .option-image:nth-child(2) {
+  .gallery__option-images .option-image:nth-child(4) {
     left: 210px;
   }
 }
 .gallery__option-images .option-image:nth-child(3) {
+  z-index: 80;
   left: 80px;
 }
 @media only screen and (min-width: 768px) {
@@ -1882,13 +1893,17 @@ p {
     left: 140px;
   }
 }
-.gallery__option-images .option-image:nth-child(4) {
+.gallery__option-images .option-image:nth-child(2) {
+  z-index: 90;
   left: 40px;
 }
 @media only screen and (min-width: 768px) {
-  .gallery__option-images .option-image:nth-child(4) {
+  .gallery__option-images .option-image:nth-child(2) {
     left: 70px;
   }
+}
+.gallery__option-images .option-image:nth-child(1) {
+  z-index: 100;
 }
 
 .gallery-hr {
