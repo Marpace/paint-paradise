@@ -474,6 +474,9 @@ p {
     flex-wrap: nowrap;
     gap: 10px;
   }
+  .nav-wrap .nav-links-container .nav-link-drop-down:hover > div {
+    height: 240px;
+  }
 }
 .nav-wrap .nav-links-container .nav-link-drop-down .drop-down-arrow {
   transition: 300ms;
@@ -524,7 +527,7 @@ p {
     align-items: center;
     align-items: flex-start;
     justify-content: flex-end;
-    background-color: white;
+    background-image: linear-gradient(to top, white, white 95%, rgba(0, 0, 0, 0) 95%);
     box-shadow: 4px 13px 12px -10px rgba(0, 0, 0, 0.22);
   }
 }
@@ -600,7 +603,7 @@ p {
 }
 @media only screen and (min-width: 992px) {
   .nav-wrap .nav-links-container .nav-link-drop-down .drop-down-open {
-    height: 300px;
+    height: 240px;
   }
 }
 .nav-wrap .nav-links-container .nav-link-drop-down .cms-dropdown {
@@ -1789,6 +1792,113 @@ p {
   flex-wrap: wrap;
 }
 
+.gallery__option {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (min-width: 768px) {
+  .gallery__option {
+    height: 375px;
+  }
+}
+.gallery__option-images {
+  width: 300px;
+  position: relative;
+  height: 200px;
+  perspective: 1000px;
+}
+@media only screen and (min-width: 768px) {
+  .gallery__option-images {
+    width: 545px;
+    height: 250px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .gallery__option-images:hover > .option-image:nth-child(1) {
+    left: 360px;
+  }
+  .gallery__option-images:hover > .option-image:nth-child(2) {
+    left: 270px;
+  }
+  .gallery__option-images:hover > .option-image:nth-child(3) {
+    left: 180px;
+  }
+  .gallery__option-images:hover > .option-image:nth-child(4) {
+    left: 90px;
+  }
+  .gallery__option-images:hover > .option-image:nth-child(5) {
+    left: 0px;
+  }
+}
+.gallery__option-images .option-image {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  margin: 5%;
+  border-radius: 10px;
+  transform: rotate3d(0, 1, 0, -30deg);
+  overflow: hidden;
+  border: 2px solid #1D1330;
+  box-shadow: 3px 10px 10px -10px #2f2e2e;
+  transition-duration: 500ms;
+  transition-property: left;
+  cursor: pointer;
+}
+@media only screen and (min-width: 768px) {
+  .gallery__option-images .option-image {
+    border: 4px solid #1D1330;
+    height: 200px;
+    width: 200px;
+  }
+}
+.gallery__option-images .option-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.gallery__option-images .option-image:nth-child(1) {
+  left: 160px;
+}
+@media only screen and (min-width: 768px) {
+  .gallery__option-images .option-image:nth-child(1) {
+    left: 280px;
+  }
+}
+.gallery__option-images .option-image:nth-child(2) {
+  left: 120px;
+}
+@media only screen and (min-width: 768px) {
+  .gallery__option-images .option-image:nth-child(2) {
+    left: 210px;
+  }
+}
+.gallery__option-images .option-image:nth-child(3) {
+  left: 80px;
+}
+@media only screen and (min-width: 768px) {
+  .gallery__option-images .option-image:nth-child(3) {
+    left: 140px;
+  }
+}
+.gallery__option-images .option-image:nth-child(4) {
+  left: 40px;
+}
+@media only screen and (min-width: 768px) {
+  .gallery__option-images .option-image:nth-child(4) {
+    left: 70px;
+  }
+}
+
+.gallery-hr {
+  width: 90%;
+  margin: 0 auto;
+  border: none;
+  height: 1px;
+  background-color: #1d1330;
+}
+
 .grid {
   width: 95%;
   max-width: 900px;
@@ -2041,7 +2151,7 @@ p {
 }
 .cms .cms-interface__edit .image-upload-form__btn {
   width: 245px;
-  height: 30px;
+  height: 40px;
   border: none;
   font-size: 0.9rem;
   cursor: pointer;
@@ -2055,10 +2165,28 @@ p {
 .cms .cms-interface__edit .gallery-options {
   height: 150px;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   flex-wrap: wrap;
   width: 45%;
   gap: 10px;
+}
+.cms .cms-interface__edit .gallery-options .create-section-btn {
+  height: 50px;
+  padding: 0 7px;
+  border: 2px solid white;
+  color: white;
+  text-align: center;
+  background: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.cms .cms-interface__edit .gallery-options .create-section-btn:hover {
+  color: black;
+  background-color: white;
+}
+.cms .cms-interface__edit .gallery-options__message {
+  font-size: 1.5rem;
+  color: white;
 }
 .cms .cms-interface__edit .gallery-options .gallery-upload-form {
   display: flex;
@@ -2068,9 +2196,14 @@ p {
 .cms .cms-interface__edit .gallery-options .gallery-upload-form__input {
   display: none;
 }
+.cms .cms-interface__edit .gallery-options .gallery-upload-form input[type=text] {
+  height: 40px;
+  font-size: 1rem;
+  padding: 10px;
+}
 .cms .cms-interface__edit .gallery-options .gallery-upload-form__label {
   width: 245px;
-  height: 60px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2081,9 +2214,12 @@ p {
 .cms .cms-interface__edit .gallery-options .gallery-upload-form__label:hover {
   background-color: rgb(168, 168, 168);
 }
+.cms .cms-interface__edit .gallery-options .gallery-upload-form__label img {
+  width: 20px;
+}
 .cms .cms-interface__edit .gallery-options .gallery-upload-form__btn {
   width: 245px;
-  height: 30px;
+  height: 40px;
   border: none;
   font-size: 0.9rem;
   cursor: pointer;
@@ -2093,6 +2229,11 @@ p {
   transition-duration: 300ms;
   background-color: black;
   color: white;
+}
+.cms .cms-interface__edit .gallery-options .files-selected-form {
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 .cms .cms-interface__edit .gallery-options .remove-photos {
   display: flex;
@@ -2152,7 +2293,7 @@ p {
 }
 .cms .cms-interface__edit .gallery-options .remove-photos-btn {
   width: 245px;
-  height: 60px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2166,6 +2307,9 @@ p {
 }
 .cms .cms-interface__edit .gallery-options .remove-photos-btn:hover {
   background-color: rgb(168, 168, 168);
+}
+.cms .cms-interface__edit .gallery-options .remove-photos-btn img {
+  width: 20px;
 }
 .cms .cms-interface__edit .files-chosen p {
   color: white;
